@@ -1,0 +1,1506 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guía de Estudio — INU2101 EFT</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --primary: #4f46e5;
+  --primary-light: #818cf8;
+  --secondary: #7c3aed;
+  --accent: #06b6d4;
+  --danger: #ef4444;
+  --success: #10b981;
+  --warning: #f59e0b;
+  --bg: #f1f5f9;
+  --card: #ffffff;
+  --text: #1e293b;
+  --muted: #64748b;
+  --border: #e2e8f0;
+  --written-color: #4f46e5;
+  --oral-color: #0891b2;
+  --listening-bg: #ede9fe;
+  --reading-bg:   #dbeafe;
+  --writing-bg:   #ffe4e6;
+  --speaking-bg:  #d1fae5;
+  --past-color: #16a34a;
+  --present-color: #2563eb;
+  --continuous-color: #7c3aed;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #06b6d4 100%);
+  min-height: 100vh;
+  padding: 30px 15px;
+  color: var(--text);
+}
+.container {
+  background: var(--card);
+  border-radius: 20px;
+  box-shadow: 0 25px 60px rgba(79,70,229,0.25);
+  max-width: 920px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+/* ── HEADER ── */
+.header {
+  background: linear-gradient(135deg, #4f46e5, #7c3aed);
+  padding: 44px 40px 36px;
+  text-align: center;
+  color: white;
+}
+.header .eyebrow { font-size:0.72em; letter-spacing:4px; text-transform:uppercase; opacity:0.75; margin-bottom:14px; }
+.header h1 { font-family:'DM Serif Display',serif; font-size:2.3em; margin-bottom:10px; line-height:1.2; }
+.header .subtitle { opacity:0.85; font-size:1em; font-weight:300; margin-bottom:28px; }
+.weight-banner { display:flex; gap:0; border-radius:14px; overflow:hidden; max-width:520px; margin:0 auto; border:1px solid rgba(255,255,255,0.25); }
+.weight-half { flex:1; padding:14px 18px; text-align:center; }
+.weight-half.written { background:rgba(255,255,255,0.18); }
+.weight-half.oral { background:rgba(255,255,255,0.10); border-left:1px solid rgba(255,255,255,0.2); }
+.weight-half .wh-label { font-size:0.72em; letter-spacing:2px; text-transform:uppercase; opacity:0.75; margin-bottom:4px; }
+.weight-half .wh-pct { font-family:'DM Serif Display',serif; font-size:2em; line-height:1; }
+.weight-half .wh-sub { font-size:0.75em; opacity:0.7; margin-top:3px; }
+.weight-note { font-size:0.75em; opacity:0.6; margin-top:12px; }
+/* ── NAV BAR ── */
+.nav-bar { background:#f8fafc; border-bottom:1px solid var(--border); }
+.nav-labels { display:flex; align-items:stretch; border-bottom:1px solid var(--border); overflow-x:auto; scrollbar-width:none; }
+.nav-labels::-webkit-scrollbar { display:none; }
+.nav-label-cell { padding:5px 14px; font-size:0.68em; font-weight:700; letter-spacing:1px; text-transform:uppercase; white-space:nowrap; color:var(--muted); display:flex; align-items:center; }
+.nav-label-cell.written { background:#f0f4ff; color:var(--written-color); border-right:1px solid #c7d2fe; border-left:1px solid #c7d2fe; }
+.nav-label-cell.oral { background:#ecfeff; color:var(--oral-color); border-right:1px solid #a5f3fc; border-left:1px solid #a5f3fc; }
+.nav-label-spacer { flex:1; }
+.nav-tabs { display:flex; overflow-x:auto; scrollbar-width:none; }
+.nav-tabs::-webkit-scrollbar { display:none; }
+.nav-btn { flex-shrink:0; padding:10px 14px; font-family:'DM Sans',sans-serif; font-size:0.8em; font-weight:600; border:none; background:transparent; cursor:pointer; color:var(--muted); border-bottom:3px solid transparent; transition:all 0.25s; white-space:nowrap; }
+.nav-btn:hover { color:var(--primary); background:#f1f5f9; }
+.nav-btn.active { color:var(--primary); border-bottom-color:var(--primary); background:white; }
+.nav-btn.group-written { background:#f0f4ff; color:#6366f1; }
+.nav-btn.group-written:hover { background:#e0e7ff; }
+.nav-btn.group-written.active { background:white; color:var(--primary); border-bottom-color:var(--primary); }
+.written-active .nav-btn.group-written:not(.active) { background:#e0e7ff; color:var(--primary); }
+.nav-btn.group-oral { background:#ecfeff; color:#0891b2; }
+.nav-btn.group-oral:hover { background:#cffafe; }
+.nav-btn.group-oral.active { background:white; color:#0891b2; border-bottom-color:#0891b2; }
+.oral-active .nav-btn.group-oral:not(.active) { background:#cffafe; color:#0891b2; }
+.nav-sep { width:1px; background:var(--border); margin:6px 0; flex-shrink:0; }
+/* ── CONTENT ── */
+.content { padding:36px 40px; }
+.tab-panel { display:none; }
+.tab-panel.active { display:block; }
+/* ── INTRO BOX ── */
+.intro-box { background:linear-gradient(135deg,#f0f4ff,#faf5ff); border:1px solid #c4b5fd; border-left:4px solid var(--primary); border-radius:12px; padding:20px 24px; margin-bottom:32px; font-size:0.92em; line-height:1.75; color:#3730a3; }
+/* ── SECTION TITLE ── */
+.section-title { display:flex; align-items:center; gap:14px; margin-bottom:24px; }
+.section-icon { width:46px; height:46px; border-radius:12px; display:flex; align-items:center; justify-content:center; font-size:1.4em; flex-shrink:0; }
+.icon-listening { background:var(--listening-bg); }
+.icon-reading { background:var(--reading-bg); }
+.icon-writing { background:var(--writing-bg); }
+.icon-speaking { background:var(--speaking-bg); }
+.icon-calc { background:#fce7f3; }
+.section-title h2 { font-family:'DM Serif Display',serif; font-size:1.6em; color:var(--text); line-height:1.2; }
+.section-title .pts-badge { margin-left:auto; background:var(--bg); border:1px solid var(--border); border-radius:20px; padding:5px 14px; font-size:0.82em; font-weight:700; color:var(--primary); white-space:nowrap; }
+/* ── ACCORDION ── */
+.accordion { margin-bottom:12px; border-radius:12px; overflow:hidden; border:1px solid var(--border); }
+.accordion-header { width:100%; display:flex; align-items:center; gap:12px; padding:15px 20px; background:#f8fafc; border:none; cursor:pointer; text-align:left; font-family:'DM Sans',sans-serif; font-size:0.93em; font-weight:600; color:var(--text); transition:background 0.18s; }
+.accordion-header:hover { background:#f1f5f9; }
+.accordion-header.open { background:white; border-bottom:1px solid var(--border); }
+.accordion-tag { font-size:0.7em; font-weight:700; letter-spacing:1px; text-transform:uppercase; padding:3px 9px; border-radius:4px; flex-shrink:0; }
+.tag-listening { background:var(--listening-bg); color:var(--secondary); }
+.tag-reading { background:var(--reading-bg); color:#1d4ed8; }
+.tag-writing { background:var(--writing-bg); color:#be123c; }
+.tag-speaking { background:var(--speaking-bg); color:#065f46; }
+.tag-tip { background:#e0f2fe; color:#0369a1; }
+.accordion-chevron { margin-left:auto; font-size:0.85em; color:var(--muted); transition:transform 0.25s; flex-shrink:0; }
+.accordion-header.open .accordion-chevron { transform:rotate(180deg); }
+.accordion-body { display:none; padding:22px 24px; background:white; font-size:0.92em; line-height:1.75; color:var(--text); }
+.accordion-body.open { display:block; }
+/* ── CONTENT ELEMENTS ── */
+.acc-p { margin-bottom:14px; }
+.acc-p:last-child { margin-bottom:0; }
+.tip-box { background:#eff6ff; border:1px solid #bfdbfe; border-left:4px solid var(--accent); border-radius:8px; padding:14px 18px; margin:14px 0; font-size:0.9em; color:#1e40af; line-height:1.65; }
+.tip-box .tip-label { font-weight:700; text-transform:uppercase; font-size:0.7em; letter-spacing:1px; margin-bottom:6px; color:var(--accent); }
+.warning-box { background:#fffbeb; border:1px solid #fde68a; border-left:4px solid var(--warning); border-radius:8px; padding:14px 18px; margin:14px 0; font-size:0.9em; color:#92400e; line-height:1.65; }
+.warning-box .tip-label { color:var(--warning); font-weight:700; text-transform:uppercase; font-size:0.7em; letter-spacing:1px; margin-bottom:6px; }
+.example-box { background:#f0fdf4; border:1px solid #bbf7d0; border-radius:8px; padding:14px 18px; margin:14px 0; font-size:0.9em; line-height:1.7; }
+.example-box .ex-label { font-weight:700; font-size:0.7em; letter-spacing:1px; text-transform:uppercase; color:var(--success); margin-bottom:6px; }
+.ex-good { color:#15803d; font-weight:600; }
+.ex-bad { color:#b91c1c; }
+.ex-note { color:var(--muted); font-style:italic; }
+.critical-box { background:#fef2f2; border:1px solid #fca5a5; border-left:4px solid #ef4444; border-radius:8px; padding:14px 18px; margin:14px 0; font-size:0.9em; color:#7f1d1d; line-height:1.65; }
+.critical-box .tip-label { color:#ef4444; font-weight:700; text-transform:uppercase; font-size:0.7em; letter-spacing:1px; margin-bottom:6px; }
+.steps-list { counter-reset:step-counter; list-style:none; margin:10px 0 14px; }
+.steps-list li { counter-increment:step-counter; display:flex; gap:12px; margin-bottom:10px; align-items:flex-start; font-size:0.92em; }
+.steps-list li::before { content:counter(step-counter); background:var(--primary); color:white; font-size:0.75em; font-weight:700; width:22px; height:22px; border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:2px; }
+.bullet-list { list-style:none; margin:10px 0 14px; padding:0; }
+.bullet-list li { display:flex; gap:10px; margin-bottom:8px; align-items:flex-start; line-height:1.6; font-size:0.92em; }
+.bullet-list li::before { content:'→'; color:var(--primary); font-weight:700; flex-shrink:0; margin-top:1px; }
+/* ── TABLES ── */
+.grammar-table { width:100%; border-collapse:collapse; font-size:0.88em; margin:14px 0; }
+.grammar-table th { background:#f1f5f9; padding:9px 14px; text-align:left; font-weight:700; color:var(--text); border-bottom:2px solid var(--border); }
+.grammar-table td { padding:9px 14px; border-bottom:1px solid var(--border); vertical-align:top; line-height:1.55; }
+.grammar-table tr:last-child td { border-bottom:none; }
+.grammar-table tr:hover td { background:#fafafa; }
+.grammar-table .form { font-family:'DM Serif Display',serif; color:var(--secondary); }
+.grammar-table .use { color:var(--muted); font-size:0.9em; }
+.grammar-table .eg { color:#1d4ed8; font-style:italic; }
+.rubric-table { width:100%; border-collapse:collapse; font-size:0.83em; margin:14px 0; border-radius:10px; overflow:hidden; border:1px solid var(--border); table-layout:fixed; }
+.rubric-table th { background:linear-gradient(135deg,#f0fdf4,#dcfce7); padding:10px 12px; text-align:center; font-weight:700; color:#065f46; border-bottom:1px solid #86efac; font-size:0.83em; }
+.rubric-table th:first-child { text-align:left; width:20%; }
+.rubric-table td { padding:8px 10px; border-bottom:1px solid var(--border); vertical-align:top; line-height:1.45; }
+.rubric-table tr:last-child td { border-bottom:none; }
+.rubric-table td:first-child { font-weight:700; color:var(--secondary); font-size:0.84em; }
+.rubric-tl { background:#f0fdf4; } .rubric-l { background:#f7fdf9; }
+.rubric-pl { background:#fffbeb; } .rubric-il { background:#fff7ed; }
+.rubric-nl { background:#fef2f2; }
+.part-divider { border:none; border-top:2px dashed var(--border); margin:26px 0; }
+/* ── TENSE COLOR CODING ── */
+.tense-legend { display:flex; gap:10px; flex-wrap:wrap; margin:14px 0; }
+.tense-pill { display:inline-flex; align-items:center; gap:6px; padding:5px 12px; border-radius:20px; font-size:0.82em; font-weight:700; }
+.tense-pill.past { background:#dcfce7; color:#16a34a; border:1px solid #86efac; }
+.tense-pill.present { background:#dbeafe; color:#1d4ed8; border:1px solid #93c5fd; }
+.tense-pill.continuous { background:#ede9fe; color:#7c3aed; border:1px solid #c4b5fd; }
+.tense-past { color:var(--past-color); font-weight:700; }
+.tense-present { color:var(--present-color); font-weight:700; }
+.tense-continuous { color:var(--continuous-color); font-weight:700; }
+/* ── TIMELINE (SPEAKING) ── */
+.timeline-wrap { overflow-x:auto; margin:16px 0; }
+.timeline-table { border-collapse:collapse; min-width:620px; width:100%; font-size:0.85em; }
+.timeline-table th { padding:9px 14px; text-align:center; font-weight:700; font-size:0.8em; letter-spacing:0.5px; }
+.timeline-table th.col-past { background:#dcfce7; color:#16a34a; border:1px solid #86efac; }
+.timeline-table th.col-present { background:#dbeafe; color:#1d4ed8; border:1px solid #93c5fd; }
+.timeline-table th.col-continuous { background:#ede9fe; color:#7c3aed; border:1px solid #c4b5fd; }
+.timeline-table th.col-label { background:#f8fafc; color:var(--muted); border:1px solid var(--border); width:22%; }
+.timeline-table td { padding:9px 14px; border:1px solid var(--border); vertical-align:top; line-height:1.5; }
+.timeline-table td.col-past { background:#f0fdf4; }
+.timeline-table td.col-present { background:#eff6ff; }
+.timeline-table td.col-continuous { background:#faf5ff; }
+.timeline-table td.col-label { background:#f8fafc; font-weight:600; color:var(--muted); font-size:0.82em; text-transform:uppercase; letter-spacing:0.5px; }
+.timeline-table .verb-base { font-size:0.78em; color:var(--muted); font-style:italic; }
+/* ── VERB GRID ── */
+.verb-grid { display:grid; grid-template-columns:repeat(3, 1fr); gap:8px; margin:14px 0; }
+.verb-card { border-radius:8px; padding:10px 12px; display:flex; gap:10px; align-items:center; font-size:0.85em; border:1px solid; }
+.verb-card.regular { background:#f0fdf4; border-color:#86efac; }
+.verb-card.irregular { background:#faf5ff; border-color:#c4b5fd; }
+.verb-card .vbase { font-weight:700; color:var(--text); min-width:54px; }
+.verb-card .varrow { color:var(--muted); font-size:0.8em; }
+.verb-card .vpast { font-weight:700; color:var(--past-color); }
+/* ── CALCULATOR ── */
+.calc-card { background:linear-gradient(135deg,#fdf4ff,#fae8ff); border:1px solid #e879f9; border-radius:16px; padding:28px; margin:22px 0; }
+.calc-card h3 { font-family:'DM Serif Display',serif; font-size:1.3em; color:#701a75; margin-bottom:6px; }
+.calc-card .calc-sub { font-size:0.85em; color:#9333ea; margin-bottom:22px; }
+.calc-formula { background:white; border:1px solid #e9d5ff; border-radius:10px; padding:12px 16px; font-size:0.82em; color:var(--muted); margin-bottom:18px; line-height:1.6; font-family:monospace; }
+.calc-formula strong { color:var(--secondary); }
+.calc-inputs { display:grid; grid-template-columns:1fr 1fr 1fr; gap:14px; margin-bottom:20px; }
+.calc-field label { display:block; font-size:0.78em; font-weight:700; letter-spacing:0.5px; text-transform:uppercase; color:var(--muted); margin-bottom:6px; }
+.calc-field .field-pct { font-size:0.7em; font-weight:400; color:var(--primary); text-transform:none; letter-spacing:0; display:block; margin-top:1px; }
+.calc-field input[type="number"] { width:100%; padding:10px 12px; border:2px solid #e9d5ff; border-radius:8px; font-family:'DM Sans',sans-serif; font-size:1em; font-weight:600; color:var(--text); background:white; transition:border-color 0.2s; -moz-appearance:textfield; }
+.calc-field input[type="number"]::-webkit-outer-spin-button,
+.calc-field input[type="number"]::-webkit-inner-spin-button { -webkit-appearance:none; margin:0; }
+.calc-field input[type="number"]:focus { outline:none; border-color:var(--secondary); }
+.calc-result { background:white; border-radius:12px; padding:20px 22px; display:flex; align-items:center; gap:20px; flex-wrap:wrap; }
+.calc-result-num { font-family:'DM Serif Display',serif; font-size:3.2em; line-height:1; color:var(--primary); min-width:90px; transition:color 0.3s; }
+.calc-result-info { flex:1; min-width:160px; }
+.calc-result-label { font-size:0.82em; color:var(--muted); margin-bottom:4px; }
+.calc-result-msg { font-weight:700; font-size:0.95em; color:var(--text); }
+.calc-breakdown { width:100%; display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-top:14px; padding-top:14px; border-top:1px solid var(--border); }
+.calc-bd-item { background:#f8fafc; border-radius:8px; padding:10px 12px; text-align:center; font-size:0.82em; }
+.calc-bd-item .bd-label { color:var(--muted); margin-bottom:3px; }
+.calc-bd-item .bd-val { font-weight:700; color:var(--text); font-size:1.05em; }
+.calc-bd-item .bd-contribution { font-size:0.8em; color:var(--primary); margin-top:2px; }
+/* ── PRÁCTICA ── */
+.step-card { border-radius:14px; overflow:hidden; border:1px solid var(--border); margin-bottom:18px; }
+.step-hd { display:flex; align-items:center; gap:14px; padding:16px 20px; }
+.s1 { background:linear-gradient(135deg,#f0fdf4,#dcfce7); }
+.s2 { background:linear-gradient(135deg,#eff6ff,#dbeafe); }
+.s3 { background:linear-gradient(135deg,#faf5ff,#ede9fe); }
+.s4 { background:linear-gradient(135deg,#fff7ed,#ffedd5); }
+.step-num { width:36px; height:36px; border-radius:50%; background:var(--primary); color:white; display:flex; align-items:center; justify-content:center; font-family:'DM Serif Display',serif; font-size:1.1em; flex-shrink:0; }
+.step-title { font-weight:700; font-size:0.95em; color:var(--text); }
+.step-sub { font-size:0.78em; color:var(--muted); margin-top:2px; }
+.step-body { padding:18px 20px; background:white; }
+/* Data cards */
+.data-cards { display:grid; grid-template-columns:repeat(2,1fr); gap:10px; margin:12px 0; }
+.data-card { border-radius:10px; padding:14px 16px; border:1px solid; }
+.dc-who { background:#f0fdf4; border-color:#86efac; }
+.dc-where { background:#eff6ff; border-color:#93c5fd; }
+.dc-routine { background:#faf5ff; border-color:#c4b5fd; }
+.dc-free { background:#fff7ed; border-color:#fed7aa; }
+.dc-label { font-size:0.68em; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:var(--muted); margin-bottom:6px; }
+.dc-main { font-size:0.92em; font-weight:600; color:var(--text); line-height:1.5; }
+/* Planning table */
+.plan-table { width:100%; border-collapse:collapse; font-size:0.88em; margin:14px 0; }
+.plan-table th { padding:10px 14px; text-align:center; font-weight:700; font-size:0.82em; }
+.plan-table th.ph-past { background:#dcfce7; color:#16a34a; border:1px solid #86efac; }
+.plan-table th.ph-present { background:#dbeafe; color:#1d4ed8; border:1px solid #93c5fd; }
+.plan-table th.ph-question { background:#f8fafc; color:var(--muted); border:1px solid var(--border); width:28%; }
+.plan-table td { padding:9px 14px; border:1px solid var(--border); vertical-align:top; font-size:0.88em; line-height:1.55; }
+.plan-table td.pt-past { background:#f0fdf4; }
+.plan-table td.pt-present { background:#eff6ff; }
+.plan-table td.pt-question { background:#f8fafc; font-weight:600; color:var(--muted); font-size:0.82em; }
+/* Sentence starters */
+.starter-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin:12px 0; }
+.starter-card { border-radius:8px; padding:12px 14px; border:1px solid; }
+.sc-past { background:#f0fdf4; border-color:#86efac; }
+.sc-present { background:#eff6ff; border-color:#93c5fd; }
+.sc-label { font-size:0.68em; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:var(--muted); margin-bottom:6px; }
+.sc-starters { font-size:0.87em; line-height:1.75; }
+.sc-starters span { display:block; color:#1d4ed8; font-style:italic; }
+/* Practice textarea */
+.practice-area-wrap { position:relative; margin:14px 0; }
+#practiceArea { width:100%; min-height:140px; padding:14px; border:2px solid var(--border); border-radius:10px; font-family:'DM Sans',sans-serif; font-size:0.95em; color:var(--text); resize:vertical; transition:border-color 0.2s; }
+#practiceArea:focus { outline:none; border-color:var(--primary); }
+#practiceArea.wwarn { border-color:var(--warning); }
+#practiceArea.wok { border-color:var(--success); }
+#wCount { font-size:0.82em; font-weight:700; color:var(--muted); margin-top:6px; display:block; }
+#wCount.wwarn { color:var(--warning); }
+#wCount.wok { color:var(--success); }
+#evalBtn { display:block; width:100%; margin-top:14px; padding:13px; border:none; border-radius:10px; background:linear-gradient(135deg,#10b981,#059669); color:white; font-family:'DM Sans',sans-serif; font-size:0.95em; font-weight:700; cursor:pointer; transition:all 0.2s; letter-spacing:0.3px; }
+#evalBtn:hover:not(:disabled) { transform:translateY(-2px); box-shadow:0 6px 20px rgba(16,185,129,0.35); }
+#evalBtn:disabled { background:#e2e8f0; color:#94a3b8; cursor:not-allowed; }
+/* Pre-submit checklist */
+.pcheck-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+.pcheck-item { display:flex; align-items:flex-start; gap:10px; padding:10px 14px; border-radius:8px; border:1px solid var(--border); cursor:pointer; transition:background 0.15s; font-size:0.87em; line-height:1.5; }
+.pcheck-item input { display:none; }
+.pcheck-item:hover { background:#f8fafc; }
+.pcheck-item.pchecked { background:#f0fdf4; border-color:#86efac; }
+.pci-text { color:var(--text); }
+/* ── MODAL ── */
+.gemini-modal { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.5); z-index:1000; align-items:center; justify-content:center; backdrop-filter:blur(2px); }
+.gemini-modal.active { display:flex; }
+.modal-box { background:white; border-radius:16px; padding:36px 32px; max-width:440px; width:92%; text-align:center; box-shadow:0 20px 60px rgba(79,70,229,0.25); }
+.modal-icon { font-size:44px; margin-bottom:14px; }
+.modal-box h3 { font-family:'DM Serif Display',serif; font-size:1.4em; color:var(--text); margin-bottom:10px; }
+.modal-box p { font-size:0.9em; color:var(--muted); margin-bottom:16px; line-height:1.6; }
+.modal-step { background:#f8fafc; border-radius:8px; padding:10px 14px; margin-bottom:8px; font-size:0.85em; color:var(--text); text-align:left; display:flex; gap:10px; align-items:center; }
+.modal-step-num { width:22px; height:22px; border-radius:50%; background:var(--primary); color:white; font-size:0.72em; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+kbd { background:#e2e8f0; border:1px solid #cbd5e1; border-radius:4px; padding:2px 7px; font-family:monospace; font-weight:700; font-size:0.9em; }
+.modal-btns { display:flex; gap:10px; margin-top:18px; }
+.modal-btn { flex:1; padding:11px; border-radius:8px; font-family:'DM Sans',sans-serif; font-size:0.9em; font-weight:600; cursor:pointer; border:none; transition:opacity 0.15s; }
+.modal-btn:hover { opacity:0.88; }
+.modal-btn.cancel { background:#f1f5f9; color:var(--muted); }
+.modal-btn.go { background:linear-gradient(135deg,#4285F4,#34A853); color:white; }
+/* ── CHECKLIST ── */
+.checklist-section { margin-bottom: 26px; }
+.checklist-section h3 { font-family: 'DM Serif Display', serif; font-size: 1.1em; color: var(--text); margin-bottom: 12px; padding-bottom: 8px; border-bottom: 2px dashed var(--border); }
+.check-item { display: flex; align-items: flex-start; gap: 12px; padding: 11px 14px; border-radius: 10px; margin-bottom: 7px; background: #fafafa; border: 1px solid var(--border); cursor: pointer; transition: all 0.18s; user-select: none; }
+.check-item:hover { background: #f1f5f9; }
+.check-item.checked { background: #f0fdf4; border-color: #6ee7b7; }
+.check-item input[type="checkbox"] { width: 17px; height: 17px; accent-color: var(--success); flex-shrink: 0; margin-top: 2px; cursor: pointer; }
+.check-item .ci-text { font-size: 0.9em; line-height: 1.5; color: var(--text); flex: 1; }
+.check-item.checked .ci-text { color: var(--muted); text-decoration: line-through; }
+.check-item .ci-badge { margin-left: auto; font-size: 0.7em; font-weight: 700; letter-spacing: 0.5px; padding: 3px 8px; border-radius: 4px; white-space: nowrap; flex-shrink: 0; }
+.badge-l { background: var(--listening-bg); color: var(--secondary); }
+.badge-r { background: var(--reading-bg);   color: #1d4ed8; }
+.badge-w { background: var(--writing-bg);   color: #be123c; }
+.badge-s { background: var(--speaking-bg);  color: #065f46; }
+.badge-g { background: #f1f5f9; color: var(--muted); }
+.progress-bar-wrap { background: var(--bg); border-radius: 12px; padding: 14px 18px; margin-bottom: 22px; display: flex; align-items: center; gap: 14px; }
+.progress-bar-track { flex: 1; height: 10px; background: var(--border); border-radius: 10px; overflow: hidden; }
+.progress-bar-fill { height: 100%; background: linear-gradient(90deg, var(--primary), var(--accent)); border-radius: 10px; transition: width 0.4s ease; width: 0%; }
+.progress-label { font-size: 0.83em; font-weight: 600; color: var(--muted); white-space: nowrap; }
+/* ── EXAM SPLIT ── */
+.exam-split { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 22px 0; }
+.exam-half { border-radius: 14px; overflow: hidden; border: 1px solid var(--border); }
+.exam-half-header { padding: 14px 18px; display: flex; align-items: center; justify-content: space-between; }
+.exam-half-header.written { background: linear-gradient(135deg, #ede9fe, #ddd6fe); }
+.exam-half-header.oral    { background: linear-gradient(135deg, #cffafe, #a5f3fc); }
+.exam-half-header h3 { font-family: 'DM Serif Display', serif; font-size: 1.05em; color: var(--text); }
+.exam-half-header .big-pct { font-family: 'DM Serif Display', serif; font-size: 1.8em; color: var(--secondary); line-height: 1; }
+.exam-half-header.oral .big-pct { color: #0891b2; }
+.exam-half-body { padding: 14px 18px; }
+.exam-half-body ul { list-style: none; padding: 0; }
+.exam-half-body ul li { font-size: 0.87em; padding: 6px 0; border-bottom: 1px solid var(--border); color: var(--muted); display: flex; justify-content: space-between; }
+.exam-half-body ul li:last-child { border-bottom: none; }
+.exam-half-body ul li strong { color: var(--text); }
+/* ── TIME BLOCK ── */
+.time-block { background: #f8fafc; border: 1px solid var(--border); border-radius: 12px; padding: 18px 22px; margin: 18px 0; }
+.time-block h4 { font-family: 'DM Serif Display', serif; font-size: 1.05em; color: var(--secondary); margin-bottom: 12px; }
+.time-row { display: flex; justify-content: space-between; align-items: center; padding: 7px 0; border-bottom: 1px solid var(--border); font-size: 0.9em; }
+.time-row:last-child { border-bottom: none; font-weight: 700; }
+.time-row .tr-time { color: var(--secondary); font-weight: 600; }
+/* ── RESPONSIVE ── */
+@media (max-width:768px) {
+  .content { padding:20px; }
+  .header { padding:28px 20px; }
+  .header h1 { font-size:1.6em; }
+  .calc-inputs { grid-template-columns:1fr; }
+  .verb-grid { grid-template-columns:1fr 1fr; }
+  .data-cards { grid-template-columns:1fr; }
+  .starter-grid { grid-template-columns:1fr; }
+  .pcheck-grid { grid-template-columns:1fr; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- ══════════ HEADER ══════════ -->
+<div class="header">
+  <div class="eyebrow">DuocUC · INU2101 · Inglés Básico II</div>
+  <h1>Guía de Estudio</h1>
+  <p class="subtitle">Examen Final Transversal · Files 7–12</p>
+  <div class="weight-banner">
+    <div class="weight-half written">
+      <div class="wh-label">Prueba Escrita</div>
+      <div class="wh-pct">30%</div>
+      <div class="wh-sub">Listening · Reading · Writing</div>
+    </div>
+    <div class="weight-half oral">
+      <div class="wh-label">Prueba Oral</div>
+      <div class="wh-pct">10%</div>
+      <div class="wh-sub">Speaking</div>
+    </div>
+  </div>
+  <div class="weight-note">El 60% restante corresponde a tu Promedio de notas del semestre</div>
+</div>
+
+<!-- ══════════ NAV ══════════ -->
+<div class="nav-bar">
+  <div class="nav-labels">
+    <div class="nav-label-spacer"></div>
+    <div class="nav-label-cell written">📝 Escrito · 30% nota final</div>
+    <div class="nav-label-cell oral">🎤 Oral · 10% nota final</div>
+    <div class="nav-label-spacer"></div>
+  </div>
+  <div class="nav-tabs" id="navTabs">
+    <button class="nav-btn active"        onclick="showTab('overview',  this)">📋 Panorama</button>
+    <button class="nav-btn"               onclick="showTab('calc',      this)">🧮 Calculadora</button>
+    <div class="nav-sep"></div>
+    <button class="nav-btn group-written" onclick="showTab('listening', this)">🎧 Listening</button>
+    <button class="nav-btn group-written" onclick="showTab('reading',   this)">📖 Reading</button>
+    <button class="nav-btn group-written" onclick="showTab('writing',   this)">✍️ Writing</button>
+    <button class="nav-btn group-written" onclick="showTab('practica',  this)">🖊️ Práctica</button>
+    <div class="nav-sep"></div>
+    <button class="nav-btn group-oral"    onclick="showTab('speaking',  this)">🎤 Speaking</button>
+    <div class="nav-sep"></div>
+    <button class="nav-btn"               onclick="showTab('checklist', this)">☑️ Checklist</button>
+  </div>
+</div>
+
+<!-- ══════════ CONTENT ══════════ -->
+<div class="content">
+
+<!-- ══════════════════════════════
+     TAB: PANORAMA
+══════════════════════════════ -->
+<div id="tab-overview" class="tab-panel active">
+  <div class="section-title">
+    <div class="section-icon icon-overview" style="background:#e0f2fe;">📋</div>
+    <h2>Panorama general del examen</h2>
+  </div>
+
+  <div class="intro-box">
+    Esta guía te ayuda a <strong>prepararte</strong> para el EFT desarrollando las habilidades que evalúa cada sección. Usa los tabs para explorar estrategias, la rúbrica oficial y el tab de Práctica para practicar Writing con retroalimentación de Gemini.
+  </div>
+
+  <div class="exam-split">
+    <div class="exam-half">
+      <div class="exam-half-header written">
+        <h3>📝 Examen Escrito</h3>
+        <span class="big-pct">30%</span>
+      </div>
+      <div class="exam-half-body">
+        <ul>
+          <li><span>🎧 Listening — Part A (T/F)</span><strong>6 pts</strong></li>
+          <li><span>🎧 Listening — Part B (MC)</span><strong>6 pts</strong></li>
+          <li><span>📖 Reading — Part A (preguntas abiertas)</span><strong>6 pts</strong></li>
+          <li><span>📖 Reading — Part B (MC)</span><strong>6 pts</strong></li>
+          <li><span>✍️ Writing (mín. 40 palabras)</span><strong>12 pts</strong></li>
+          <li><span><strong>Total escrito</strong></span><strong>36 pts</strong></li>
+        </ul>
+      </div>
+    </div>
+    <div class="exam-half">
+      <div class="exam-half-header oral">
+        <h3>🎤 Examen Oral</h3>
+        <span class="big-pct" style="color:#0891b2;">10%</span>
+      </div>
+      <div class="exam-half-body">
+        <ul>
+          <li><span>Sección 1 — Tarea individual (timeline)</span><strong>—</strong></li>
+          <li><span>Sección 2 — Interacción en pareja</span><strong>—</strong></li>
+          <li><span>Coherencia y Fluidez</span><strong>4 pts</strong></li>
+          <li><span>Vocabulario</span><strong>3 pts</strong></li>
+          <li><span>Gramática</span><strong>3 pts</strong></li>
+          <li><span>Pronunciación</span><strong>2 pts</strong></li>
+          <li><span><strong>Total oral</strong></span><strong>12 pts</strong></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="time-block">
+    <h4>⏱ Tiempo sugerido — Examen Escrito (60 minutos)</h4>
+    <div class="time-row"><span>🎧 Listening — escuchar y responder</span><span class="tr-time">~15 min</span></div>
+    <div class="time-row"><span>📖 Reading — leer y responder preguntas</span><span class="tr-time">~20 min</span></div>
+    <div class="time-row"><span>✍️ Writing — planificar, escribir y revisar</span><span class="tr-time">~20 min</span></div>
+    <div class="time-row"><span>✅ Revisión final</span><span class="tr-time">~5 min</span></div>
+    <div class="time-row"><span><strong>Total</strong></span><span class="tr-time"><strong>60 min</strong></span></div>
+  </div>
+
+  <div class="tip-box">
+    <div class="tip-label">💡 Estrategia general</div>
+    Lee <strong>todas las preguntas antes</strong> de escuchar el audio o leer el texto. En Listening, anticipa qué información buscar. En Reading, ubica las respuestas más rápido. En Writing, reserva 5 minutos al final para revisar gramática, spelling y contar palabras.
+  </div>
+
+  <div class="critical-box">
+    <div class="tip-label">🔴 Advertencias importantes</div>
+    🔴 <strong>Listening:</strong> los audios se reproducen <strong>dos veces solamente</strong> — lee las preguntas antes de escuchar.<br>
+    🔴 <strong>Listening Part A:</strong> si marcas <strong>F (falso)</strong>, debes escribir la corrección — sin ella no obtienes el puntaje completo.<br>
+    🔴 <strong>Writing:</strong> escribe <strong>al menos 40 palabras</strong> con ideas originales — no copies ideas del examen.<br>
+    🔴 <strong>Integridad:</strong> el examen es individual. Cualquier intento de copia se califica con nota <strong>1,0</strong>.
+  </div>
+</div>
+
+<!-- ══════════════════════════════
+     TAB: LISTENING
+══════════════════════════════ -->
+<div id="tab-listening" class="tab-panel">
+  <div class="section-title">
+    <div class="section-icon icon-listening">🎧</div>
+    <h2>Listening</h2>
+    <span class="pts-badge">12 pts · 2 partes</span>
+  </div>
+
+  <div class="intro-box">
+    El Listening evalúa tu comprensión de audio en inglés. Tendrás <strong>2 reproducciones</strong> de cada audio. Lee las preguntas <strong>antes</strong> de escuchar — saber qué buscas marca la diferencia.
+  </div>
+
+  <div class="accordion">
+    <button class="accordion-header open" onclick="toggleAcc(this)">
+      <span class="accordion-tag tag-listening">Part A</span>
+      Conversación telefónica · Verdadero / Falso · 4 ítems (1,5 pts c/u)
+      <span class="accordion-chevron">▼</span>
+    </button>
+    <div class="accordion-body open">
+      <p class="acc-p"><strong>¿Qué evalúa?</strong> Tu comprensión de detalles específicos en una conversación (reservas, precios, instalaciones, cantidades). Escuchas una llamada telefónica y decides si 4 afirmaciones son verdaderas o falsas.</p>
+      <div class="critical-box">
+        <div class="tip-label">🔴 Regla clave — no olvides esto</div>
+        Si marcas <strong>F (falso)</strong>, <strong>debes escribir la información correcta</strong>. Sin la corrección escrita, no obtienes el puntaje completo aunque hayas identificado bien que era falso.
+      </div>
+      <div class="tip-box">
+        <div class="tip-label">💡 Estrategia</div>
+        <ol class="steps-list">
+          <li>Lee las 4 afirmaciones antes de escuchar. Identifica el dato específico que evalúa cada una (número, precio, instalación, persona).</li>
+          <li>En la primera escucha, marca T o F para cada ítem. Si es F, intenta anotar la corrección.</li>
+          <li>En la segunda escucha, verifica cada respuesta y completa las correcciones que te faltaron.</li>
+          <li>Escribe la corrección en una oración completa o al menos con el dato correcto claramente indicado.</li>
+        </ol>
+      </div>
+      <table class="grammar-table">
+        <thead><tr><th>Tipo de dato a escuchar</th><th>Cómo identificarlo</th><th>Ejemplo de corrección</th></tr></thead>
+        <tbody>
+          <tr><td>Número de habitaciones / personas</td><td class="use">Presta atención a "one", "two", "a double", "a single"</td><td class="eg">F → There is one double room.</td></tr>
+          <tr><td>Instalaciones (pool, spa, gym)</td><td class="use">"there is / there isn't" + nombre de la instalación</td><td class="eg">F → There isn't a swimming pool.</td></tr>
+          <tr><td>Precio por noche</td><td class="use">Número + moneda (£ pounds). Ej: "one hundred and ninety-five"</td><td class="eg">F → The price is £195 per night.</td></tr>
+          <tr><td>Cantidad de noches</td><td class="use">"two nights", "a week", "three days"</td><td class="eg">F → They are staying for two nights.</td></tr>
+        </tbody>
+      </table>
+      <div class="example-box">
+        <div class="ex-label">✅ Respuesta completa vs. incompleta</div>
+        <p><em>Afirmación:</em> "The price per night is £295."</p>
+        <p class="ex-bad">❌ Solo marcar F → puntaje incompleto</p>
+        <p class="ex-good">✅ F → The price per night is £195.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion">
+    <button class="accordion-header" onclick="toggleAcc(this)">
+      <span class="accordion-tag tag-listening">Part B</span>
+      Conversación / monólogo · Selección múltiple · 6 preguntas (1 pt c/u)
+      <span class="accordion-chevron">▼</span>
+    </button>
+    <div class="accordion-body">
+      <p class="acc-p"><strong>¿Qué evalúa?</strong> Tu comprensión de una conversación más larga o monólogo. Las preguntas evalúan detalles como lugares, actividades, tiempos y personas mencionados en el audio.</p>
+      <div class="tip-box">
+        <div class="tip-label">💡 Estrategia</div>
+        <ol class="steps-list">
+          <li>Lee las 6 preguntas y sus opciones antes de escuchar. Subraya la palabra clave de cada pregunta (Where, What, When, How long, Who).</li>
+          <li>Mientras escuchas, sigue el orden de las preguntas — el audio las responde en secuencia.</li>
+          <li>Selecciona tu respuesta en la primera escucha. En la segunda, verifica las que te quedaron con duda.</li>
+          <li>Si dos opciones parecen correctas, busca el detalle exacto que las diferencia (por ejemplo: "near the center" vs. "near the airport").</li>
+        </ol>
+      </div>
+      <table class="grammar-table">
+        <thead><tr><th>Tipo de pregunta</th><th>Qué escuchar</th><th>Distractor frecuente</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Where</strong> (lugar)</td><td class="use">Preposiciones + sustantivo de lugar: "near", "in", "at"</td><td class="eg">Confundir "near the center" con "near the airport"</td></tr>
+          <tr><td><strong>What did they do</strong> (acción pasada)</td><td class="use">Verbo en pasado: went, had, stayed, walked</td><td class="eg">Confundir lo que hicieron vs. lo que no hicieron</td></tr>
+          <tr><td><strong>When / What day</strong> (tiempo)</td><td class="use">"last Saturday", "last night", "on Friday"</td><td class="eg">Confundir el día de llegada con el día de salida</td></tr>
+          <tr><td><strong>How long</strong> (duración)</td><td class="use">"a week", "three days", "a weekend"</td><td class="eg">Confundir el número de días con el número de noches</td></tr>
+          <tr><td><strong>What does X do</strong> (rutina)</td><td class="use">Simple present: "every morning she goes to..."</td><td class="eg">Confundir actividad de una persona con otra</td></tr>
+        </tbody>
+      </table>
+      <div class="warning-box">
+        <div class="tip-label">⚠️ Atención</div>
+        Las opciones incorrectas usan palabras que sí aparecen en el audio, pero en un contexto diferente. Lee todas las opciones con cuidado antes de seleccionar.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════
+     TAB: READING
+══════════════════════════════ -->
+<div id="tab-reading" class="tab-panel">
+  <div class="section-title">
+    <div class="section-icon icon-reading">📖</div>
+    <h2>Reading</h2>
+    <span class="pts-badge">12 pts · 2 partes</span>
+  </div>
+
+  <div class="intro-box">
+    El Reading evalúa tu comprensión de textos en inglés. Lee las preguntas <strong>antes</strong> del texto — así sabes exactamente qué información buscar. Los textos son sobre personas, rutinas y actividades cotidianas.
+  </div>
+
+  <div class="accordion">
+    <button class="accordion-header open" onclick="toggleAcc(this)">
+      <span class="accordion-tag tag-reading">Part A</span>
+      Texto con contraste de tiempos · 4 preguntas abiertas (variable pts)
+      <span class="accordion-chevron">▼</span>
+    </button>
+    <div class="accordion-body open">
+      <p class="acc-p"><strong>¿Qué evalúa?</strong> Tu comprensión de un texto que usa <strong>Simple Present</strong> (rutinas habituales) y <strong>Present Continuous</strong> (lo que pasa ahora). Las preguntas te piden distinguir entre lo que alguien hace normalmente y lo que está haciendo en este momento.</p>
+
+      <div class="tense-legend">
+        <span class="tense-pill present">🔵 Simple Present = rutina / hábito</span>
+        <span class="tense-pill continuous">🟣 Present Continuous = ahora mismo</span>
+      </div>
+
+      <table class="grammar-table">
+        <thead><tr><th>Tiempo verbal</th><th>Señales en el texto</th><th>Ejemplo</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><span class="tense-present">Simple Present</span></td>
+            <td class="use">usually, always, every day, most days, normally</td>
+            <td class="eg">"I <strong>work</strong> in the kitchen every day." / "She <strong>goes</strong> to the library after lunch."</td>
+          </tr>
+          <tr>
+            <td><span class="tense-continuous">Present Continuous</span></td>
+            <td class="use">now, right now, today, at the moment</td>
+            <td class="eg">"Today I <strong>am working</strong> as a waiter." / "Right now, I <strong>am eating</strong> lunch."</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="tip-box">
+        <div class="tip-label">💡 Estrategia para preguntas abiertas</div>
+        <ol class="steps-list">
+          <li>Lee las 4 preguntas primero. Identifica si cada una pregunta por una rutina (Simple Present) o por algo que ocurre ahora (Present Continuous).</li>
+          <li>Lee el texto y subraya las frases relevantes para cada pregunta.</li>
+          <li>Responde en oraciones completas. No copies el texto entero — parafrasea usando las palabras clave.</li>
+          <li>Revisa que das el número exacto de ideas que pide la pregunta (si pide 2, da exactamente 2).</li>
+        </ol>
+      </div>
+
+      <table class="grammar-table">
+        <thead><tr><th>Tipo de pregunta</th><th>Qué buscar en el texto</th><th>Cómo responder</th></tr></thead>
+        <tbody>
+          <tr><td>"Mention 2 things X usually does..."</td><td class="use">Verbos en Simple Present con "usually / always / every day"</td><td class="eg">He usually rides his bike to work. / He always goes to the library after lunch.</td></tr>
+          <tr><td>"Mention 1 thing X is doing today"</td><td class="use">Verbos en Present Continuous (is + -ing)</td><td class="eg">Today he is working as a waiter.</td></tr>
+          <tr><td>"Mention 1 thing that is NOT happening today"</td><td class="use">Frases con "but today" + negación o cambio</td><td class="eg">He usually goes to the library, but today he is staying at work.</td></tr>
+        </tbody>
+      </table>
+
+      <div class="example-box">
+        <div class="ex-label">✅ Ejemplo de respuesta bien construida</div>
+        <p><em>Pregunta: "Mention 2 things Mateo usually does outside work."</em></p>
+        <p class="ex-bad">❌ "Ride bike and library." → incompleto, sin oraciones</p>
+        <p class="ex-good">✅ "He usually rides his bike to work in the morning. After lunch, he usually goes to the library to study."</p>
+      </div>
+
+      <div class="warning-box">
+        <div class="tip-label">⚠️ No inventes información</div>
+        Todas las respuestas deben venir del texto. Si agregas ideas que no aparecen, la respuesta se considera incorrecta aunque sea gramaticalmente correcta.
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion">
+    <button class="accordion-header" onclick="toggleAcc(this)">
+      <span class="accordion-tag tag-reading">Part B</span>
+      Texto de perfil personal · Selección múltiple · 6 preguntas (1 pt c/u)
+      <span class="accordion-chevron">▼</span>
+    </button>
+    <div class="accordion-body">
+      <p class="acc-p"><strong>¿Qué evalúa?</strong> Tu comprensión de un texto sobre la vida de una persona: lugar de origen, rutinas, actividades y eventos pasados. Las preguntas de selección múltiple mezclan Simple Present y Simple Past.</p>
+      <div class="tip-box">
+        <div class="tip-label">💡 Estrategia</div>
+        <ol class="steps-list">
+          <li>Lee las 6 preguntas antes del texto — cada pregunta busca un dato específico.</li>
+          <li>Al leer el texto, identifica el párrafo que responde cada pregunta. No leas todo antes de marcar.</li>
+          <li>Para preguntas en Simple Past (What did she do / Where did she go), busca verbos pasados en el texto.</li>
+          <li>Para preguntas que piden 2 actividades o características, asegúrate de que tu opción incluya exactamente las 2 que menciona el texto.</li>
+        </ol>
+      </div>
+      <table class="grammar-table">
+        <thead><tr><th>Tipo de pregunta</th><th>Señal gramatical</th><th>Dónde buscar en el texto</th></tr></thead>
+        <tbody>
+          <tr><td>"What does X want to be?"</td><td class="use">Simple Present — deseos / planes futuros</td><td class="eg">Párrafo sobre estudios / carrera</td></tr>
+          <tr><td>"How does X usually go to...?"</td><td class="use">Simple Present + adverbio de frecuencia</td><td class="eg">Párrafo sobre rutina semanal</td></tr>
+          <tr><td>"What does X do on weekends?"</td><td class="use">Simple Present — acciones habituales</td><td class="eg">Párrafo sobre los fines de semana</td></tr>
+          <tr><td>"Where did X go last...?"</td><td class="use">Simple Past — went, visited, traveled</td><td class="eg">Párrafo sobre vacaciones / pasado</td></tr>
+          <tr><td>"What 2 things does X love doing?"</td><td class="use">Verbo + -ing (love/like + gerundio)</td><td class="eg">Párrafo sobre tiempo libre</td></tr>
+        </tbody>
+      </table>
+      <div class="warning-box">
+        <div class="tip-label">⚠️ Distractores frecuentes</div>
+        Las opciones incorrectas suelen usar palabras del texto pero en combinaciones que no corresponden. Verifica que todos los elementos de la opción aparezcan juntos en el texto, no solo uno de ellos.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════
+     TAB: WRITING
+══════════════════════════════ -->
+<div id="tab-writing" class="tab-panel">
+  <div class="section-title">
+    <div class="section-icon icon-writing">✍️</div>
+    <h2>Writing</h2>
+    <span class="pts-badge">12 pts · mín. 40 palabras</span>
+  </div>
+
+  <div class="intro-box">
+    El Writing evalúa tu capacidad de narrar eventos en inglés usando <strong>Simple Past</strong>. Debes escribir sobre actividades pasadas incluyendo lugares, personas, actividades y comida. Mínimo 40 palabras con ideas originales.
+  </div>
+
+  <div class="accordion">
+    <button class="accordion-header open" onclick="toggleAcc(this)">
+      <span class="accordion-tag tag-writing">Rúbrica oficial</span>
+      4 criterios · 12 puntos en total
+      <span class="accordion-chevron">▼</span>
+    </button>
+    <div class="accordion-body open">
+      <table class="rubric-table">
+        <thead>
+          <tr>
+            <th>Criterio</th>
+            <th>Totalmente Logrado</th>
+            <th>Logrado</th>
+            <th>Parcialmente Logrado</th>
+            <th>Insuf. Logrado</th>
+            <th>No Logrado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Coherencia y Extensión<br><span style="font-weight:400;color:var(--muted);font-size:0.85em;">4 pts</span></td>
+            <td class="rubric-tl"><strong>4 pts</strong><br>≥40 palabras, ≥5 ideas completas y coherentes con el estímulo.</td>
+            <td class="rubric-l"><strong>3,2 pts</strong><br>30–39 palabras, ≥4 ideas completas y coherentes.</td>
+            <td class="rubric-pl"><strong>2,4 pts</strong><br>20–29 palabras, ≥3 ideas completas.</td>
+            <td class="rubric-il"><strong>1,2 pts</strong><br>10–19 palabras, 2 ideas coherentes.</td>
+            <td class="rubric-nl"><strong>0 pts</strong><br>Sin respuesta o menos de 10 palabras.</td>
+          </tr>
+          <tr>
+            <td>Vocabulario<br><span style="font-weight:400;color:var(--muted);font-size:0.85em;">3 pts</span></td>
+            <td class="rubric-tl"><strong>3 pts</strong><br>≥8 palabras del vocabulario estudiado, en contextos adecuados.</td>
+            <td class="rubric-l"><strong>2,4 pts</strong><br>6–7 palabras del vocabulario estudiado.</td>
+            <td class="rubric-pl"><strong>1,8 pts</strong><br>≥5 palabras del vocabulario.</td>
+            <td class="rubric-il"><strong>0,9 pts</strong><br>3–4 palabras del vocabulario.</td>
+            <td class="rubric-nl"><strong>0 pts</strong><br>Menos de 3 palabras o uso incorrecto.</td>
+          </tr>
+          <tr>
+            <td>Gramática<br><span style="font-weight:400;color:var(--muted);font-size:0.85em;">3 pts</span></td>
+            <td class="rubric-tl"><strong>3 pts</strong><br>Oraciones correctas, tiempos verbales bien conjugados, sin errores.</td>
+            <td class="rubric-l"><strong>2,4 pts</strong><br>Mayoría correcta, 2–3 errores que no afectan comprensión.</td>
+            <td class="rubric-pl"><strong>1,8 pts</strong><br>4–5 errores que dificultan parcialmente.</td>
+            <td class="rubric-il"><strong>0,9 pts</strong><br>Hasta 6 errores que limitan la claridad.</td>
+            <td class="rubric-nl"><strong>0 pts</strong><br>≥7 errores que impiden la comprensión.</td>
+          </tr>
+          <tr>
+            <td>Ortografía<br><span style="font-weight:400;color:var(--muted);font-size:0.85em;">2 pts</span></td>
+            <td class="rubric-tl"><strong>2 pts</strong><br>1–2 errores de ortografía sin afectar el mensaje.</td>
+            <td class="rubric-l"><strong>1,6 pts</strong><br>3–4 errores sin afectar el mensaje en general.</td>
+            <td class="rubric-pl"><strong>1,2 pts</strong><br>5–6 errores que afectan parcialmente.</td>
+            <td class="rubric-il"><strong>0,6 pts</strong><br>7–9 errores que afectan la idea principal.</td>
+            <td class="rubric-nl"><strong>0 pts</strong><br>Más de 10 errores.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="accordion">
+    <button class="accordion-header" onclick="toggleAcc(this)">
+      <span class="accordion-tag tag-writing">Simple Past</span>
+      El tiempo verbal central del Writing
+      <span class="accordion-chevron">▼</span>
+    </button>
+    <div class="accordion-body">
+      <p class="acc-p">El Writing del examen pide narrar eventos pasados. El construct central es el <strong class="tense-past">Simple Past</strong>.</p>
+      <table class="grammar-table">
+        <thead><tr><th>Estructura</th><th>Uso</th><th>Ejemplo</th></tr></thead>
+        <tbody>
+          <tr><td class="form tense-past">I / He / She + verbo pasado</td><td class="use">Afirmación — acción que ocurrió</td><td class="eg">I <strong>went</strong> to the mall. / She <strong>cooked</strong> dinner.</td></tr>
+          <tr><td class="form tense-past">I / He / She + didn't + verbo base</td><td class="use">Negación — algo que no ocurrió</td><td class="eg">I <strong>didn't go</strong> to class. / He <strong>didn't watch</strong> TV.</td></tr>
+          <tr><td class="form tense-past">Did + I / he / she + verbo base?</td><td class="use">Pregunta — para Speaking Sección 2</td><td class="eg"><strong>Did</strong> you have breakfast? / <strong>Did</strong> she study?</td></tr>
+        </tbody>
+      </table>
+      <div class="warning-box">
+        <div class="tip-label">⚠️ Error más común</div>
+        Usar el verbo base en lugar del pasado: <em class="ex-bad">❌ "I go to the park"</em> → <em class="ex-good">✅ "I <strong>went</strong> to the park"</em>. Revisa cada verbo que escribas.
+      </div>
+      <p class="acc-p" style="margin-top:14px;font-weight:600;">Verbos irregulares del nivel — memorizarlos es clave:</p>
+      <div class="verb-grid">
+        <div class="verb-card irregular"><span class="vbase">go</span><span class="varrow">→</span><span class="vpast">went</span></div>
+        <div class="verb-card irregular"><span class="vbase">have</span><span class="varrow">→</span><span class="vpast">had</span></div>
+        <div class="verb-card irregular"><span class="vbase">get</span><span class="varrow">→</span><span class="vpast">got</span></div>
+        <div class="verb-card irregular"><span class="vbase">see</span><span class="varrow">→</span><span class="vpast">saw</span></div>
+        <div class="verb-card irregular"><span class="vbase">do</span><span class="varrow">→</span><span class="vpast">did</span></div>
+        <div class="verb-card irregular"><span class="vbase">buy</span><span class="varrow">→</span><span class="vpast">bought</span></div>
+        <div class="verb-card irregular"><span class="vbase">leave</span><span class="varrow">→</span><span class="vpast">left</span></div>
+        <div class="verb-card irregular"><span class="vbase">say</span><span class="varrow">→</span><span class="vpast">said</span></div>
+        <div class="verb-card irregular"><span class="vbase">write</span><span class="varrow">→</span><span class="vpast">wrote</span></div>
+        <div class="verb-card irregular"><span class="vbase">sit</span><span class="varrow">→</span><span class="vpast">sat</span></div>
+        <div class="verb-card irregular"><span class="vbase">tell</span><span class="varrow">→</span><span class="vpast">told</span></div>
+        <div class="verb-card irregular"><span class="vbase">send</span><span class="varrow">→</span><span class="vpast">sent</span></div>
+      </div>
+      <p class="acc-p" style="margin-top:14px;font-weight:600;">Verbos regulares — recuerda agregar -ed:</p>
+      <div class="verb-grid">
+        <div class="verb-card regular"><span class="vbase">cook</span><span class="varrow">→</span><span class="vpast">cooked</span></div>
+        <div class="verb-card regular"><span class="vbase">walk</span><span class="varrow">→</span><span class="vpast">walked</span></div>
+        <div class="verb-card regular"><span class="vbase">watch</span><span class="varrow">→</span><span class="vpast">watched</span></div>
+        <div class="verb-card regular"><span class="vbase">play</span><span class="varrow">→</span><span class="vpast">played</span></div>
+        <div class="verb-card regular"><span class="vbase">stay</span><span class="varrow">→</span><span class="vpast">stayed</span></div>
+        <div class="verb-card regular"><span class="vbase">travel</span><span class="varrow">→</span><span class="vpast">traveled</span></div>
+        <div class="verb-card regular"><span class="vbase">visit</span><span class="varrow">→</span><span class="vpast">visited</span></div>
+        <div class="verb-card regular"><span class="vbase">study</span><span class="varrow">→</span><span class="vpast">studied</span></div>
+        <div class="verb-card regular"><span class="vbase">relax</span><span class="varrow">→</span><span class="vpast">relaxed</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion">
+    <button class="accordion-header" onclick="toggleAcc(this)">
+      <span class="accordion-tag tag-writing">Estrategias</span>
+      Cómo escribir bien en A1–A2
+      <span class="accordion-chevron">▼</span>
+    </button>
+    <div class="accordion-body">
+      <table class="grammar-table">
+        <thead><tr><th>Criterio</th><th>Qué hacer</th><th>Qué evitar</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>Extensión</strong></td>
+            <td class="use">Incluye 5–6 ideas distintas. Menciona lugares, actividades, personas y comida. Cuenta tus palabras antes de terminar.</td>
+            <td class="eg" style="color:#b91c1c;">Repetir la misma idea con otras palabras. Escribir solo 2–3 oraciones cortas.</td>
+          </tr>
+          <tr>
+            <td><strong>Vocabulario</strong></td>
+            <td class="use">Usa palabras del libro: lugares (park, mall, restaurant), comidas (pizza, salad), actividades (cook, walk, watch).</td>
+            <td class="eg" style="color:#b91c1c;">Usar solo palabras muy básicas (go, do, eat) sin variación.</td>
+          </tr>
+          <tr>
+            <td><strong>Gramática</strong></td>
+            <td class="use">Verifica que todos tus verbos estén en pasado. Usa negaciones con <em>didn't + verbo base</em>.</td>
+            <td class="eg" style="color:#b91c1c;">Mezclar presente y pasado en el mismo texto. Usar "did + pasado" (did went ❌).</td>
+          </tr>
+          <tr>
+            <td><strong>Ortografía</strong></td>
+            <td class="use">Revisa spelling de verbos irregulares: went, bought, saw. También: restaurant, weekend, morning.</td>
+            <td class="eg" style="color:#b91c1c;">Escribir de prisa sin revisar. Confundir: there/their, went/want.</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="example-box">
+        <div class="ex-label">✅ Ejemplo de buena respuesta (Writing)</div>
+        <p style="color:var(--muted);font-size:0.88em;margin-bottom:8px;"><em>Prompt: Write about a past weekend. Include places, activities, people and food.</em></p>
+        <p class="ex-good">Last Saturday, my brother went to the mall with his friends. They had lunch at an Italian restaurant and ate pizza. In the afternoon, he walked in the park and talked a lot. In the evening, he cooked dinner at home and watched a movie. On Sunday, he stayed home and studied for his classes. He didn't go out because it rained.</p>
+        <p class="ex-note">(~65 palabras · lugares ✓ · actividades ✓ · personas ✓ · comida ✓ · Simple Past ✓)</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════
+     TAB: PRÁCTICA
+══════════════════════════════ -->
+<div id="tab-practica" class="tab-panel">
+  <div class="section-title">
+    <div class="section-icon icon-writing">🖊️</div>
+    <h2>Práctica de Writing</h2>
+    <span class="pts-badge">Con evaluación Gemini</span>
+  </div>
+
+  <!-- PASO 1 -->
+  <div class="step-card">
+    <div class="step-hd s1">
+      <div class="step-num">1</div>
+      <div><div class="step-title">Lee el estímulo</div><div class="step-sub">Una tarea de escritura similar a lo que encontrarás en el examen</div></div>
+    </div>
+    <div class="step-body">
+      <div class="intro-box" style="margin-bottom:0;">
+        <strong>Write about what your best friend or a family member did last weekend.</strong><br>
+        Include 5 or 6 different ideas and use at least 40 words.<br><br>
+        Mention:
+        <ul style="margin-top:8px;padding-left:20px;line-height:1.9;">
+          <li>Places</li>
+          <li>Activities</li>
+          <li>People</li>
+          <li>Food</li>
+        </ul>
+        <br>
+        Remember to check your vocabulary, grammar, and spelling, and to include ONLY original ideas.
+      </div>
+      <div class="warning-box" style="margin-top:14px;margin-bottom:0;">
+        <div class="tip-label">💡 Cómo abordar este estímulo</div>
+        Piensa en tu mejor amigo/a o un familiar y recuerda qué hizo el fin de semana pasado. Escribe usando <strong>Simple Past en tercera persona</strong>: <em>He went to... / She had... / He played...</em>
+      </div>
+    </div>
+  </div>
+
+  <!-- PASO 2 -->
+  <div class="step-card">
+    <div class="step-hd s2">
+      <div class="step-num">2</div>
+      <div><div class="step-title">Planifica antes de escribir</div><div class="step-sub">30 segundos de planificación hacen una gran diferencia</div></div>
+    </div>
+    <div class="step-body">
+      <table class="grammar-table">
+        <thead><tr><th>¿Qué mencionar?</th><th>Pregúntate esto</th><th>Ejemplo de idea</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>Lugar</strong></td>
+            <td class="use">¿A dónde fue?</td>
+            <td class="eg">He went to the mall. / She visited a friend's house.</td>
+          </tr>
+          <tr>
+            <td><strong>Actividad</strong></td>
+            <td class="use">¿Qué hizo?</td>
+            <td class="eg">He played football. / She watched a movie.</td>
+          </tr>
+          <tr>
+            <td><strong>Personas</strong></td>
+            <td class="use">¿Con quién estuvo?</td>
+            <td class="eg">He went with his friends. / She stayed with her family.</td>
+          </tr>
+          <tr>
+            <td><strong>Comida</strong></td>
+            <td class="use">¿Qué comió o bebió?</td>
+            <td class="eg">They had pizza for lunch. / She cooked dinner at home.</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="tip-box">
+        <div class="tip-label">⚠️ Recuerda: Simple Past en tercera persona</div>
+        Verbos regulares: <strong>cook → cooked · walk → walked · watch → watched · play → played</strong><br>
+        Verbos irregulares: <strong>go → went · have → had · see → saw · buy → bought · do → did</strong><br>
+        Negación: <strong>He/She didn't + verbo base</strong> → She didn't go to the gym.
+      </div>
+    </div>
+  </div>
+
+  <!-- PASO 3 -->
+  <div class="step-card">
+    <div class="step-hd s3">
+      <div class="step-num">3</div>
+      <div><div class="step-title">Escribe y evalúa con Gemini</div><div class="step-sub">Escribe tu texto y recibe retroalimentación</div></div>
+    </div>
+    <div class="step-body">
+      <div class="practice-area-wrap">
+        <textarea id="practiceArea" placeholder="Write about what your best friend or a family member did last weekend..." oninput="practiceWordCount()"></textarea>
+        <span id="wCount">0 palabras</span>
+      </div>
+      <button id="evalBtn" onclick="copiarParaGemini()" disabled style="opacity:0.45;cursor:not-allowed;">
+        🤖 Copiar prompt de evaluación Gemini
+      </button>
+    </div>
+  </div>
+
+  <!-- PASO 4 -->
+  <div class="step-card">
+    <div class="step-hd s4">
+      <div class="step-num">4</div>
+      <div><div class="step-title">Revisa antes de entregar al profesor</div><div class="step-sub">Marca cada ítem cuando estés seguro/a</div></div>
+    </div>
+    <div class="step-body">
+      <div class="pcheck-grid">
+        <label class="pcheck-item" onclick="ptoggleCheck(this)"><input type="checkbox"><span class="pci-text">✅ Usé <strong>Simple Past</strong> correctamente en todas las acciones pasadas.</span></label>
+        <label class="pcheck-item" onclick="ptoggleCheck(this)"><input type="checkbox"><span class="pci-text">✅ Incluí un <strong>lugar, una actividad, una persona y una comida</strong>.</span></label>
+        <label class="pcheck-item" onclick="ptoggleCheck(this)"><input type="checkbox"><span class="pci-text">✅ Usé <strong>he / she</strong> correctamente — no mezclé con "I".</span></label>
+        <label class="pcheck-item" onclick="ptoggleCheck(this)"><input type="checkbox"><span class="pci-text">✅ Verifiqué el spelling de los verbos irregulares (went, had, saw, bought).</span></label>
+        <label class="pcheck-item" onclick="ptoggleCheck(this)"><input type="checkbox"><span class="pci-text">✅ Conté las palabras — mi texto tiene <strong>al menos 40</strong>.</span></label>
+        <label class="pcheck-item" onclick="ptoggleCheck(this)"><input type="checkbox"><span class="pci-text">✅ Mis ideas son <strong>originales</strong> — no copié ejemplos de la guía.</span></label>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════
+     TAB: SPEAKING
+══════════════════════════════ -->
+<div id="tab-speaking" class="tab-panel">
+  <div class="section-title">
+    <div class="section-icon icon-speaking">🎤</div>
+    <h2>Speaking</h2>
+    <span class="pts-badge">12 pts · 2 secciones</span>
+  </div>
+
+  <div class="intro-box">
+    El examen oral tiene <strong>2 secciones</strong>. En la Sección 1 describes la semana de una persona usando un timeline. En la Sección 2 interactúas con un/a compañero/a haciendo y respondiendo preguntas sobre eventos pasados.
+  </div>
+
+  <div class="accordion">
+    <button class="accordion-header open" onclick="toggleAcc(this)">
+      <span class="accordion-tag tag-speaking">Rúbrica oral</span>
+      4 criterios · 12 puntos en total
+      <span class="accordion-chevron">▼</span>
+    </button>
+    <div class="accordion-body open">
+      <table class="rubric-table">
+        <thead>
+          <tr>
+            <th>Criterio</th>
+            <th>Totalmente Logrado</th>
+            <th>Logrado</th>
+            <th>Parcialmente Logrado</th>
+            <th>Insuf. Logrado</th>
+            <th>No Logrado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Coherencia y Fluidez<br><span style="font-weight:400;color:var(--muted);font-size:0.85em;">4 pts</span></td>
+            <td class="rubric-tl"><strong>4 pts</strong><br>Todas las tareas coherentes con instrucciones. Hasta 3 interrupciones menores.</td>
+            <td class="rubric-l"><strong>3,2 pts</strong><br>Todas las tareas coherentes, fluidez mayoritariamente adecuada. Hasta 4 interrupciones.</td>
+            <td class="rubric-pl"><strong>2,4 pts</strong><br>Todas las tareas, 1 caso de incoherencia. Hasta 5 interrupciones/titubeos.</td>
+            <td class="rubric-il"><strong>1,2 pts</strong><br>1 o ambas tareas incompletas. 6–7 interrupciones que dificultan comprensión.</td>
+            <td class="rubric-nl"><strong>0 pts</strong><br>Ideas mayoritariamente incoherentes. 8+ interrupciones. No responde.</td>
+          </tr>
+          <tr>
+            <td>Vocabulario<br><span style="font-weight:400;color:var(--muted);font-size:0.85em;">3 pts</span></td>
+            <td class="rubric-tl"><strong>3 pts</strong><br>≥6 palabras del vocabulario estudiado, usadas correctamente.</td>
+            <td class="rubric-l"><strong>2,4 pts</strong><br>≥5 palabras del vocabulario estudiado.</td>
+            <td class="rubric-pl"><strong>1,8 pts</strong><br>≥4 palabras del vocabulario estudiado.</td>
+            <td class="rubric-il"><strong>0,9 pts</strong><br>≥3 palabras del vocabulario estudiado.</td>
+            <td class="rubric-nl"><strong>0 pts</strong><br>2 o menos palabras, o uso incorrecto. No responde.</td>
+          </tr>
+          <tr>
+            <td>Gramática<br><span style="font-weight:400;color:var(--muted);font-size:0.85em;">3 pts</span></td>
+            <td class="rubric-tl"><strong>3 pts</strong><br>Oraciones gramaticalmente correctas. Máx. 1 error sin afectar comprensión.</td>
+            <td class="rubric-l"><strong>2,4 pts</strong><br>Mayoría correcta. 2–3 errores sin afectar comprensión global.</td>
+            <td class="rubric-pl"><strong>1,8 pts</strong><br>4–5 errores que dificultan parcialmente la comprensión.</td>
+            <td class="rubric-il"><strong>0,9 pts</strong><br>6–7 errores que dificultan significativamente.</td>
+            <td class="rubric-nl"><strong>0 pts</strong><br>8+ errores que impiden la comprensión. No responde.</td>
+          </tr>
+          <tr>
+            <td>Pronunciación<br><span style="font-weight:400;color:var(--muted);font-size:0.85em;">2 pts</span></td>
+            <td class="rubric-tl"><strong>2 pts</strong><br>Máx. 2 errores de pronunciación sin interferir en la comprensión.</td>
+            <td class="rubric-l"><strong>1,6 pts</strong><br>3–4 errores, mensaje comprensible.</td>
+            <td class="rubric-pl"><strong>1,2 pts</strong><br>5–6 errores que afectan parcialmente la claridad.</td>
+            <td class="rubric-il"><strong>0,6 pts</strong><br>7–8 errores que dificultan la comprensión.</td>
+            <td class="rubric-nl"><strong>0 pts</strong><br>Más de 9 errores o articulación incomprensible. No responde.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="accordion">
+    <button class="accordion-header" onclick="toggleAcc(this)">
+      <span class="accordion-tag tag-speaking">Sección 1</span>
+      Tarea individual — Timeline de actividades (3 tiempos verbales)
+      <span class="accordion-chevron">▼</span>
+    </button>
+    <div class="accordion-body">
+      <p class="acc-p">Ves una imagen de una persona con su <strong>timeline semanal</strong>. Debes decir <strong>3 ideas</strong>:</p>
+      <div class="tense-legend">
+        <span class="tense-pill past">🟢 1 evento en Simple Past (algo que hizo)</span>
+        <span class="tense-pill present">🔵 1 evento habitual en Simple Present (algo que hace siempre)</span>
+        <span class="tense-pill continuous">🟣 1 evento en Present Continuous (lo que está haciendo ahora)</span>
+      </div>
+
+      <div class="tip-box" style="margin-top:14px;">
+        <div class="tip-label">📋 Formato del timeline</div>
+        El timeline muestra 3 momentos distintos de la semana y un cuadro "Now" en la esquina. Los verbos aparecen en <strong>forma base</strong> — tú debes conjugarlos según el tiempo que te pide la tarea.
+      </div>
+
+      <p class="acc-p" style="font-weight:600;margin-top:16px;">Ejemplo con datos inventados — Valeria:</p>
+      <div class="timeline-wrap">
+        <table class="timeline-table">
+          <thead>
+            <tr>
+              <th class="col-label">📅 Día / Momento</th>
+              <th class="col-past">🟢 Last Sunday<br><small>(Simple Past)</small></th>
+              <th class="col-present">🔵 Wednesday<br><small>(Simple Present)</small></th>
+              <th class="col-continuous">🟣 Now<br><small>(Present Continuous)</small></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="col-label">Actividades</td>
+              <td class="col-past">
+                <div>• go to the gym (9:00)</div>
+                <div>• have lunch with mom</div>
+                <div>• walk in the park</div>
+              </td>
+              <td class="col-present">
+                <div>• take the bus to work</div>
+                <div>• have dinner at home</div>
+                <div>• study after work</div>
+              </td>
+              <td class="col-continuous">
+                <div>• read a book</div>
+                <div>• drink tea</div>
+                <div>• sit on the sofa</div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="example-box">
+        <div class="ex-label">✅ Ejemplo de respuesta oral completa</div>
+        <p><span class="tense-past">🟢 Simple Past:</span> <em class="ex-good">"Last Sunday, Valeria <strong>went</strong> to the gym at nine o'clock."</em></p>
+        <p><span class="tense-present">🔵 Simple Present:</span> <em class="ex-good">"On Wednesdays, she usually <strong>takes</strong> the bus to work."</em></p>
+        <p><span class="tense-continuous">🟣 Present Continuous:</span> <em class="ex-good">"Right now, she <strong>is reading</strong> a book and <strong>drinking</strong> tea."</em></p>
+      </div>
+
+      <div class="tip-box">
+        <div class="tip-label">💡 Estrategia</div>
+        <ul class="bullet-list">
+          <li>El timeline da los verbos en forma base — <strong>tú debes conjugarlos</strong> en el tiempo que corresponde a cada punto.</li>
+          <li>Para el pasado, recuerda los irregulares: go → <strong>went</strong>, have → <strong>had</strong>, do → <strong>did</strong>.</li>
+          <li>Para el presente habitual, agrega frecuencia: "she <strong>always</strong> sets an alarm" / "she <strong>usually</strong> takes the bus".</li>
+          <li>Para el present continuous, usa: "she <strong>is</strong> + verbo-<strong>ing</strong>" → "she is <strong>reading</strong>".</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion">
+    <button class="accordion-header" onclick="toggleAcc(this)">
+      <span class="accordion-tag tag-speaking">Sección 2</span>
+      Interacción en pareja — Preguntas sobre eventos pasados
+      <span class="accordion-chevron">▼</span>
+    </button>
+    <div class="accordion-body">
+      <p class="acc-p">Cada estudiante elige un tema y debe <strong>hacer 2 preguntas</strong> a su compañero/a usando los verbos sugeridos en <strong>forma base</strong>. El compañero/a responde. Luego invierten los roles.</p>
+      <p class="acc-p">Los temas son momentos pasados: <em>esta mañana, anoche, el fin de semana pasado.</em></p>
+
+      <table class="grammar-table">
+        <thead><tr><th>Verbo en forma base</th><th>Cómo construir la pregunta en Simple Past</th><th>Ejemplo de respuesta</th></tr></thead>
+        <tbody>
+          <tr><td><strong>get up</strong></td><td class="use">What time <strong>did</strong> you get up?</td><td class="eg">I got up at seven thirty.</td></tr>
+          <tr><td><strong>have</strong> (breakfast / dinner)</td><td class="use">What <strong>did</strong> you have for breakfast?</td><td class="eg">I had bread and coffee.</td></tr>
+          <tr><td><strong>do</strong></td><td class="use"><strong>Did</strong> you do anything special?</td><td class="eg">Yes, I did. / No, I didn't.</td></tr>
+          <tr><td><strong>get</strong> home</td><td class="use">What time <strong>did</strong> you get home?</td><td class="eg">I got home at ten p.m.</td></tr>
+          <tr><td><strong>go</strong> to bed</td><td class="use">What time <strong>did</strong> you go to bed?</td><td class="eg">I went to bed at midnight.</td></tr>
+          <tr><td><strong>sleep</strong></td><td class="use"><strong>Did</strong> you sleep late?</td><td class="eg">Yes, I slept until noon. / No, I didn't.</td></tr>
+        </tbody>
+      </table>
+
+      <div class="critical-box">
+        <div class="tip-label">🔴 Regla gramatical clave</div>
+        En preguntas y negaciones en Simple Past, el verbo principal vuelve a la <strong>forma base</strong>:<br>
+        ✅ "Did you <strong>go</strong> to the gym?" (NO: "Did you went?")<br>
+        ✅ "I <strong>didn't sleep</strong> well." (NO: "I didn't slept.")
+      </div>
+
+      <div class="example-box">
+        <div class="ex-label">✅ Ejemplo de interacción completa</div>
+        <p><strong>Estudiante A:</strong> <em class="ex-good">"What time did you get up this morning?"</em></p>
+        <p><strong>Estudiante B:</strong> <em class="ex-good">"I got up at seven o'clock."</em></p>
+        <p><strong>Estudiante A:</strong> <em class="ex-good">"Did you have breakfast?"</em></p>
+        <p><strong>Estudiante B:</strong> <em class="ex-good">"Yes, I did. I had coffee and toast."</em></p>
+        <p style="margin-top:8px;"><strong>Roles invertidos — Estudiante B pregunta:</strong></p>
+        <p><strong>Estudiante B:</strong> <em class="ex-good">"What did you do before bed last night?"</em></p>
+        <p><strong>Estudiante A:</strong> <em class="ex-good">"I watched a series and relaxed."</em></p>
+      </div>
+
+      <div class="tip-box">
+        <div class="tip-label">💡 Estrategia</div>
+        <ul class="bullet-list">
+          <li>Practica en casa haciendo preguntas en voz alta. El automatismo de "Did you + verbo base" tarda en instalarse.</li>
+          <li>Si no recuerdas cómo se dice algo, describe con palabras simples: <em>"I used my phone to see... pictures"</em>.</li>
+          <li>Responde en oraciones completas — no solo "yes" o "no". Añade un detalle: "Yes, I did. I had eggs and juice."</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════
+     TAB: CALCULADORA
+══════════════════════════════ -->
+<div id="tab-calc" class="tab-panel">
+  <div class="section-title">
+    <div class="section-icon icon-calc">🧮</div>
+    <h2>Calculadora de Nota</h2>
+  </div>
+
+  <div class="intro-box">
+    Ingresa tus notas estimadas para calcular tu Nota Final del EFT. Puedes ajustar los valores para explorar qué nota necesitas en el examen.
+  </div>
+
+  <div class="calc-card">
+    <h3>Nota Final EFT</h3>
+    <div class="calc-sub">Fórmula oficial DuocUC</div>
+    <div class="calc-formula">
+      Nota Final = (<strong>Promedio Semestral × 0,6</strong>) + (<strong>Nota Escrita × 0,3</strong>) + (<strong>Nota Oral × 0,1</strong>)
+    </div>
+    <div class="calc-inputs">
+      <div class="calc-field">
+        <label>Promedio Semestral <span class="field-pct">Peso: 60%</span></label>
+        <input type="number" id="inputProm" min="1" max="7" step="0.1" placeholder="ej. 5.5" oninput="calcNota()">
+      </div>
+      <div class="calc-field">
+        <label>Nota Escrita <span class="field-pct">Peso: 30% · Escala 1–7</span></label>
+        <input type="number" id="inputEscrito" min="1" max="7" step="0.1" placeholder="ej. 5.0" oninput="calcNota()">
+      </div>
+      <div class="calc-field">
+        <label>Nota Oral <span class="field-pct">Peso: 10% · Escala 1–7</span></label>
+        <input type="number" id="inputOral" min="1" max="7" step="0.1" placeholder="ej. 5.5" oninput="calcNota()">
+      </div>
+    </div>
+    <div class="calc-result">
+      <div class="calc-result-num" id="notaFinal">—</div>
+      <div class="calc-result-info">
+        <div class="calc-result-label">Nota Final EFT</div>
+        <div class="calc-result-msg" id="notaMsg">Ingresa tus notas para calcular</div>
+      </div>
+      <div class="calc-breakdown" id="calcBreakdown" style="display:none;">
+        <div class="calc-bd-item">
+          <div class="bd-label">Promedio × 0,6</div>
+          <div class="bd-val" id="bdProm">—</div>
+          <div class="bd-contribution" id="bdPromPct">—</div>
+        </div>
+        <div class="calc-bd-item">
+          <div class="bd-label">Escrito × 0,3</div>
+          <div class="bd-val" id="bdEscrito">—</div>
+          <div class="bd-contribution" id="bdEscritoPct">—</div>
+        </div>
+        <div class="calc-bd-item">
+          <div class="bd-label">Oral × 0,1</div>
+          <div class="bd-val" id="bdOral">—</div>
+          <div class="bd-contribution" id="bdOralPct">—</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tip-box">
+    <div class="tip-label">💡 Cómo interpretar tu nota</div>
+    <ul class="bullet-list">
+      <li>La nota mínima de aprobación es <strong>4,0</strong> (equivale al 60% del puntaje máximo).</li>
+      <li>Tu Promedio Semestral tiene el mayor peso (60%). Una nota alta en el semestre protege tu nota final.</li>
+      <li>Si tu promedio es bajo, necesitarás notas más altas en el escrito y oral para compensar.</li>
+      <li>La nota del escrito se calcula sobre 36 pts: Listening 12 + Reading 12 + Writing 12. Pide a tu profesor cómo se convierte a escala 1–7.</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ══════════════════════════════
+     TAB: CHECKLIST
+══════════════════════════════ -->
+<div id="tab-checklist" class="tab-panel">
+  <div class="section-title">
+    <div class="section-icon" style="background:#f0fdf4;">☑️</div>
+    <h2>Checklist de preparación</h2>
+  </div>
+
+  <div class="progress-bar-wrap">
+    <div class="progress-bar-track"><div class="progress-bar-fill" id="progressFill"></div></div>
+    <div class="progress-label" id="progressLabel">0 / 17 completado</div>
+  </div>
+
+  <div class="checklist-section">
+    <h3>📚 Antes del examen — Estudio</h3>
+    <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="ci-text">Repaso los verbos irregulares del nivel y sus formas en pasado: go→went, have→had, see→saw, buy→bought, do→did, leave→left.</span><span class="ci-badge badge-w">Writing</span></label>
+    <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="ci-text">Practico el contraste Simple Present (rutinas) vs. Present Continuous (acciones en el momento): "She works / She is working."</span><span class="ci-badge badge-r">Reading</span></label>
+    <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="ci-text">Practico construir preguntas en Simple Past: Did + sujeto + verbo base → "Did you go?" / "What did she have?"</span><span class="ci-badge badge-s">Speaking</span></label>
+    <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="ci-text">Reviso la rúbrica de Writing: coherencia y extensión, vocabulario, gramática y ortografía.</span><span class="ci-badge badge-w">Writing</span></label>
+    <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="ci-text">Reviso la rúbrica de Speaking: coherencia y fluidez, vocabulario, gramática y pronunciación.</span><span class="ci-badge badge-s">Speaking</span></label>
+    <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="ci-text">Practico el tab de Práctica de esta guía y reviso el feedback de Gemini con atención.</span><span class="ci-badge badge-w">Writing</span></label>
+  </div>
+
+  <div class="checklist-section">
+    <h3>🎧 El día del examen escrito — Listening</h3>
+    <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="ci-text">Leo todas las preguntas de Listening <strong>antes</strong> de escuchar el audio para anticipar qué información buscar.</span><span class="ci-badge badge-l">Listening</span></label>
+    <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="ci-text">En Part A, si marco <strong>F (falso)</strong>, escribo la información correcta — sin la corrección no obtengo el puntaje completo.</span><span class="ci-badge badge-l">Listening</span></label>
+    <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="ci-text">Uso la segunda reproducción para verificar mis respuestas y completar las correcciones que me faltaron.</span><span class="ci-badge badge-l">Listening</span></label>
+  </div>
+
+  <div class="checklist-section">
+    <h3>📖 El día del examen escrito — Reading</h3>
+    <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="ci-text">Leo las preguntas de Reading <strong>antes</strong> de leer el texto para saber exactamente qué información buscar.</span><span class="ci-badge badge-r">Reading</span></label>
+    <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="ci-text">En Part A, respondo en oraciones completas e incluyo exactamente el número de ideas que pide cada pregunta.</span><span class="ci-badge badge-r">Reading</span></label>
+    <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="ci-text">No invento información — todas mis respuestas vienen del texto.</span><span class="ci-badge badge-r">Reading</span></label>
+  </div>
+
+  <div class="checklist-section">
+    <h3>✍️ El día del examen escrito — Writing</h3>
+    <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="ci-text">Mi texto incluye lugar, actividad, persona y comida — los 4 elementos que pide el estímulo.</span><span class="ci-badge badge-w">Writing</span></label>
+    <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="ci-text">Cuento mis palabras antes de terminar — tengo al menos <strong>40 palabras</strong>.</span><span class="ci-badge badge-w">Writing</span></label>
+    <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="ci-text">Reviso que todos mis verbos estén en el tiempo correcto y verifico el spelling de los irregulares.</span><span class="ci-badge badge-w">Writing</span></label>
+  </div>
+
+  <div class="checklist-section">
+    <h3>🎤 El día del examen oral — Speaking</h3>
+    <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="ci-text">En la Sección 1, recuerdo conjugar los verbos del timeline: pasado (went/had), presente (takes/studies), continuous (is reading).</span><span class="ci-badge badge-s">Speaking</span></label>
+    <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="ci-text">En la Sección 2, uso <strong>Did + verbo base</strong> en las preguntas y respondo en oraciones completas — no solo "yes" o "no".</span><span class="ci-badge badge-s">Speaking</span></label>
+  </div>
+</div>
+
+</div><!-- /.content -->
+</div><!-- /.container -->
+
+<!-- ══════════ MODAL GEMINI ══════════ -->
+<div class="gemini-modal" id="geminiModal">
+  <div class="modal-box">
+    <div class="modal-icon">🤖</div>
+    <h3>Prompt copiado al portapapeles</h3>
+    <p>Abre Gemini y pega el prompt para recibir tu retroalimentación.</p>
+    <div class="modal-step"><div class="modal-step-num">1</div>Haz clic en "Ir a Gemini" para abrir en una nueva pestaña.</div>
+    <div class="modal-step"><div class="modal-step-num">2</div>Pega el prompt con <kbd>Ctrl+V</kbd> / <kbd>Cmd+V</kbd> en el campo de texto.</div>
+    <div class="modal-step"><div class="modal-step-num">3</div>Presiona Enter y espera la evaluación completa.</div>
+    <div class="modal-btns">
+      <button class="modal-btn cancel" onclick="cerrarModal()">Cancelar</button>
+      <button class="modal-btn go" onclick="irAGemini()">Ir a Gemini →</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── TABS ──
+function showTab(name, btn) {
+  document.querySelectorAll('.tab-panel').forEach(function(p) { p.classList.remove('active'); });
+  document.getElementById('tab-' + name).classList.add('active');
+  var navTabs = document.getElementById('navTabs');
+  navTabs.classList.remove('written-active','oral-active');
+  document.querySelectorAll('.nav-btn').forEach(function(b) { b.classList.remove('active'); });
+  btn.classList.add('active');
+  if (btn.classList.contains('group-written')) navTabs.classList.add('written-active');
+  if (btn.classList.contains('group-oral')) navTabs.classList.add('oral-active');
+}
+
+// ── ACCORDION ──
+function toggleAcc(header) {
+  var body = header.nextElementSibling;
+  var isOpen = header.classList.contains('open');
+  header.classList.toggle('open', !isOpen);
+  body.classList.toggle('open', !isOpen);
+}
+
+// ── CALCULATOR ──
+function calcNota() {
+  var prom    = parseFloat(document.getElementById('inputProm').value);
+  var escrito = parseFloat(document.getElementById('inputEscrito').value);
+  var oral    = parseFloat(document.getElementById('inputOral').value);
+  var el      = document.getElementById('notaFinal');
+  var msg     = document.getElementById('notaMsg');
+  var breakdown = document.getElementById('calcBreakdown');
+
+  if (isNaN(prom) || isNaN(escrito) || isNaN(oral)) {
+    el.textContent = '—';
+    msg.textContent = 'Ingresa tus tres notas para calcular';
+    breakdown.style.display = 'none';
+    el.style.color = 'var(--primary)';
+    return;
+  }
+  prom    = Math.min(7, Math.max(1, prom));
+  escrito = Math.min(7, Math.max(1, escrito));
+  oral    = Math.min(7, Math.max(1, oral));
+
+  var contribProm    = prom * 0.6;
+  var contribEscrito = escrito * 0.3;
+  var contribOral    = oral * 0.1;
+  var nota = contribProm + contribEscrito + contribOral;
+  nota = Math.min(7, Math.max(1, Math.round(nota * 10) / 10));
+
+  el.textContent = nota.toFixed(1).replace('.',',');
+  breakdown.style.display = 'grid';
+  document.getElementById('bdProm').textContent    = contribProm.toFixed(2).replace('.',',');
+  document.getElementById('bdEscrito').textContent = contribEscrito.toFixed(2).replace('.',',');
+  document.getElementById('bdOral').textContent    = contribOral.toFixed(2).replace('.',',');
+  document.getElementById('bdPromPct').textContent    = prom.toFixed(1).replace('.',',') + ' × 0,6';
+  document.getElementById('bdEscritoPct').textContent = escrito.toFixed(1).replace('.',',') + ' × 0,3';
+  document.getElementById('bdOralPct').textContent    = oral.toFixed(1).replace('.',',') + ' × 0,1';
+
+  if (nota >= 4) {
+    el.style.color = 'var(--success)';
+    if (nota >= 6) msg.textContent = '¡Excelente! Nota sobresaliente.';
+    else if (nota >= 5) msg.textContent = '¡Muy bien! Nota sobre el promedio.';
+    else msg.textContent = 'Aprobado/a. Sigue practicando para mejorar.';
+  } else {
+    el.style.color = 'var(--danger)';
+    msg.textContent = 'En riesgo de reprobar. Revisa la distribución de pesos.';
+  }
+}
+
+// ── PRÁCTICA ──
+function practiceWordCount() {
+  var txt = document.getElementById('practiceArea').value.trim();
+  var n = txt === '' ? 0 : txt.split(/\s+/).filter(function(w) { return w.length > 0; }).length;
+  var el  = document.getElementById('wCount');
+  var ta  = document.getElementById('practiceArea');
+  var btn = document.getElementById('evalBtn');
+  el.textContent = n + (n === 1 ? ' palabra' : ' palabras');
+  if (n >= 40)      { el.className = 'wok';  ta.className = 'wok'; }
+  else if (n >= 20) { el.className = 'wwarn'; ta.className = 'wwarn'; }
+  else              { el.className = '';      ta.className = ''; }
+  if (n >= 1) {
+    btn.disabled = false;
+    btn.style.opacity = '1';
+    btn.style.cursor  = 'pointer';
+  } else {
+    btn.disabled = true;
+    btn.style.opacity = '0.45';
+    btn.style.cursor  = 'not-allowed';
+  }
+}
+
+function ptoggleCheck(label) {
+  var cb = label.querySelector('input[type="checkbox"]');
+  cb.checked = !cb.checked;
+  label.classList.toggle('pchecked', cb.checked);
+}
+
+function buildGeminiPrompt() {
+  var studentText = document.getElementById('practiceArea').value.trim();
+  var wordCount   = studentText.split(/\s+/).filter(function(w) { return w.length > 0; }).length;
+
+  return 'Eres un profesor experto en ingl\u00e9s como lengua extranjera para nivel A1\u2013A2 (CEFR).\n'
+    + 'Un estudiante de nivel A1\u2013A2 ha escrito el siguiente texto en ingl\u00e9s.\n\n'
+    + '---\n'
+    + 'N\u00daMERO DE PALABRAS: ' + wordCount + '\n\n'
+    + 'TEXTO DEL ESTUDIANTE:\n'
+    + '"' + studentText + '"\n'
+    + '---\n\n'
+    + 'TAREA:\n'
+    + 'El estudiante deb\u00eda escribir sobre lo que su mejor amigo/a o un familiar hizo el fin de semana pasado.\n'
+    + 'Deb\u00eda incluir: lugares, actividades, personas y comida. M\u00ednimo 40 palabras. Ideas originales basadas en experiencias reales.\n\n'
+    + 'Estructuras gramaticales requeridas:\n'
+    + '- Simple Past en tercera persona (He/She + verbo pasado). Verbos regulares: verb+ed. Irregulares: go\u2192went, have\u2192had, see\u2192saw, buy\u2192bought, do\u2192did.\n'
+    + '- Negaci\u00f3n en Simple Past si aparece: He/She didn\'t + verbo base.\n'
+    + '- Vocabulario de lugares (park, mall, restaurant, home), actividades y comida.\n'
+    + '- M\u00ednimo 8 palabras del vocabulario estudiado en clases.\n'
+    + '- M\u00ednimo 40 palabras totales.\n'
+    + '- Pronombres de tercera persona: he/she/his/her \u2014 el texto debe referirse a otra persona, no al propio estudiante.\n\n'
+    + 'IMPORTANTE PARA LA EVALUACI\u00d3N:\n'
+    + 'Este es nivel A1\u2013A2. Los errores t\u00edpicos de hispanohablantes en este nivel incluyen:\n'
+    + '- Usar verbo base en lugar de pasado (he go en vez de he went)\n'
+    + '- Usar "did + pasado" en preguntas o negaciones (did went ❌)\n'
+    + '- Olvidar la -s en Simple Present tercera persona (he work)\n'
+    + '- Errores de spelling en verbos irregulares (buyed, goed)\n'
+    + '- Confundir he/she o his/her\n'
+    + 'Estos errores son esperados. Eval\u00faa con generosidad apropiada al nivel: no penalices excesivamente errores t\u00edpicos de A1\u2013A2.\n\n'
+    + 'R\u00daBRICA OFICIAL:\n\n'
+    + '1. COHERENCIA Y EXTENSI\u00d3N (m\u00e1x. 4 pts)\n'
+    + '   Totalmente Logrado (4 pts): \u226540 palabras, \u22655 ideas completas y coherentes.\n'
+    + '   Logrado (3,2 pts): 30\u201339 palabras, \u22654 ideas completas.\n'
+    + '   Parcialmente Logrado (2,4 pts): 20\u201329 palabras, \u22653 ideas completas.\n'
+    + '   Insuficientemente Logrado (1,2 pts): 10\u201319 palabras, 2 ideas.\n'
+    + '   No Logrado (0 pts): menos de 10 palabras.\n\n'
+    + '2. VOCABULARIO (m\u00e1x. 3 pts)\n'
+    + '   Totalmente Logrado (3 pts): \u22658 palabras del vocabulario del curso usadas correctamente.\n'
+    + '   Logrado (2,4 pts): 6\u20137 palabras.\n'
+    + '   Parcialmente Logrado (1,8 pts): \u22655 palabras.\n'
+    + '   Insuficientemente Logrado (0,9 pts): 3\u20134 palabras.\n'
+    + '   No Logrado (0 pts): menos de 3 palabras o uso incorrecto.\n\n'
+    + '3. GRAM\u00c1TICA (m\u00e1x. 3 pts)\n'
+    + '   Totalmente Logrado (3 pts): oraciones correctas, tiempos verbales correctos, sin errores.\n'
+    + '   Logrado (2,4 pts): mayor\u00eda correcta, 2\u20133 errores sin afectar comprensión.\n'
+    + '   Parcialmente Logrado (1,8 pts): 4\u20135 errores que dificultan parcialmente.\n'
+    + '   Insuficientemente Logrado (0,9 pts): 6 errores que limitan la claridad.\n'
+    + '   No Logrado (0 pts): \u22657 errores que impiden la comprensión.\n\n'
+    + '4. ORTOGRAF\u00cdA (m\u00e1x. 2 pts)\n'
+    + '   Totalmente Logrado (2 pts): 1\u20132 errores sin afectar el mensaje.\n'
+    + '   Logrado (1,6 pts): 3\u20134 errores sin afectar el mensaje en general.\n'
+    + '   Parcialmente Logrado (1,2 pts): 5\u20136 errores que afectan parcialmente.\n'
+    + '   Insuficientemente Logrado (0,6 pts): 7\u20139 errores que afectan la idea principal.\n'
+    + '   No Logrado (0 pts): m\u00e1s de 10 errores.\n\n'
+    + 'POR FAVOR ENTREGA (todo en espa\u00f1ol, excepto ejemplos en ingl\u00e9s):\n\n'
+    + '\u26a0\ufe0f ADVERTENCIA DE AUTENTICIDAD (primero, siempre):\n'
+    + 'Analiza se\u00f1ales de uso de IA o traductor: vocabulario avanzado inesperado para A1\u2013A2, ausencia total de errores t\u00edpicos del nivel, estructuras complejas, conectores avanzados.\n'
+    + '\ud83d\udea8 si detectas se\u00f1ales claras / \u2705 si parece aut\u00e9ntico + justificaci\u00f3n breve.\n\n'
+    + '1. \u2705 RETROALIMENTACI\u00d3N GENERAL (2\u20133 oraciones motivadoras pero honestas)\n'
+    + '2. \ud83d\udccb EVALUACI\u00d3N POR CRITERIO con puntaje y justificaci\u00f3n breve para cada uno de los 4 criterios\n'
+    + '3. \u274c ERRORES ESPEC\u00cdFICOS (m\u00e1ximo 4, priorizando los m\u00e1s importantes):\n'
+    + '   Error: [fragmento incorrecto] \u2192 Correcci\u00f3n: [forma correcta] \u2014 Explicaci\u00f3n: [breve en espa\u00f1ol]\n'
+    + '4. \u2728 SUGERENCIAS DE MEJORA (2\u20133 concretas y aplicables al nivel A1\u2013A2)\n'
+    + '5. \ud83d\udcac FRASE DE CIERRE motivadora adaptada al nivel';
+}
+
+function fallbackCopy(text) {
+  var ta = document.createElement('textarea');
+  ta.value = text;
+  ta.style.position = 'fixed';
+  ta.style.opacity = '0';
+  document.body.appendChild(ta);
+  ta.focus();
+  ta.select();
+  try { document.execCommand('copy'); } catch(e) {}
+  document.body.removeChild(ta);
+}
+
+function copiarParaGemini() {
+  var geminiText = buildGeminiPrompt();
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(geminiText).catch(function() { fallbackCopy(geminiText); });
+  } else {
+    fallbackCopy(geminiText);
+  }
+  mostrarModal();
+}
+
+function mostrarModal() {
+  document.getElementById('geminiModal').classList.add('active');
+}
+
+function cerrarModal() {
+  document.getElementById('geminiModal').classList.remove('active');
+}
+
+function irAGemini() {
+  cerrarModal();
+  window.open('https://gemini.google.com', '_blank');
+}
+
+// ── CHECKLIST ──
+function toggleCheck(label) {
+  var cb = label.querySelector('input[type="checkbox"]');
+  cb.checked = !cb.checked;
+  label.classList.toggle('checked', cb.checked);
+  updateProgress();
+  saveChecklist();
+}
+function updateProgress() {
+  var total = document.querySelectorAll('.check-item').length;
+  var done  = document.querySelectorAll('.check-item.checked').length;
+  var pct   = total > 0 ? Math.round((done / total) * 100) : 0;
+  document.getElementById('progressFill').style.width = pct + '%';
+  document.getElementById('progressLabel').textContent = done + ' / ' + total + ' completado';
+}
+function saveChecklist() {
+  var states = [];
+  document.querySelectorAll('.check-item input').forEach(function(cb) { states.push(cb.checked); });
+  try { localStorage.setItem('inu2101_checklist_v1', JSON.stringify(states)); } catch(e) {}
+}
+function loadChecklist() {
+  try {
+    var raw = localStorage.getItem('inu2101_checklist_v1');
+    if (!raw) return;
+    var parsed = JSON.parse(raw);
+    var items = document.querySelectorAll('.check-item');
+    parsed.forEach(function(checked, i) {
+      if (checked && items[i]) {
+        items[i].querySelector('input').checked = true;
+        items[i].classList.add('checked');
+      }
+    });
+    updateProgress();
+  } catch(e) {}
+}
+
+// ── INIT ──
+calcNota();
+loadChecklist();
+updateProgress();
+</script>
+</body>
+</html>
