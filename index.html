@@ -449,6 +449,7 @@ kbd { background:#e2e8f0; border:1px solid #cbd5e1; border-radius:4px; padding:2
     <div class="tip-label">🔴 Advertencias importantes</div>
     🔴 <strong>Listening:</strong> los audios se reproducen <strong>dos veces solamente</strong> — lee las preguntas antes de escuchar.<br>
     🔴 <strong>Listening Part A:</strong> si marcas <strong>F (falso)</strong>, debes escribir la corrección — sin ella no obtienes el puntaje completo.<br>
+    🔴 <strong>Selección múltiple:</strong> marca <strong>una sola alternativa</strong> por pregunta — la doble marca se considera respuesta incorrecta.<br>
     🔴 <strong>Writing:</strong> escribe <strong>al menos 40 palabras</strong> con ideas originales — no copies ideas del examen.<br>
     🔴 <strong>Integridad:</strong> el examen es individual. Cualquier intento de copia se califica con nota <strong>1,0</strong>.
   </div>
@@ -1205,7 +1206,7 @@ kbd { background:#e2e8f0; border:1px solid #cbd5e1; border-radius:4px; padding:2
 
   <div class="progress-bar-wrap">
     <div class="progress-bar-track"><div class="progress-bar-fill" id="progressFill"></div></div>
-    <div class="progress-label" id="progressLabel">0 / 17 completado</div>
+    <div class="progress-label" id="progressLabel">0 / 19 completado</div>
   </div>
 
   <div class="checklist-section">
@@ -1222,11 +1223,13 @@ kbd { background:#e2e8f0; border:1px solid #cbd5e1; border-radius:4px; padding:2
     <h3>🎧 El día del examen escrito — Listening</h3>
     <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="ci-text">Leo todas las preguntas de Listening <strong>antes</strong> de escuchar el audio para anticipar qué información buscar.</span><span class="ci-badge badge-l">Listening</span></label>
     <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="ci-text">En Part A, si marco <strong>F (falso)</strong>, escribo la información correcta — sin la corrección no obtengo el puntaje completo.</span><span class="ci-badge badge-l">Listening</span></label>
+    <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="ci-text">En Part B (selección múltiple), marco <strong>una sola alternativa</strong> por pregunta — la doble marca se considera incorrecta.</span><span class="ci-badge badge-l">Listening</span></label>
     <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="ci-text">Uso la segunda reproducción para verificar mis respuestas y completar las correcciones que me faltaron.</span><span class="ci-badge badge-l">Listening</span></label>
   </div>
 
   <div class="checklist-section">
     <h3>📖 El día del examen escrito — Reading</h3>
+    <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="ci-text">En las preguntas de selección múltiple, marco <strong>una sola alternativa</strong> por pregunta — la doble marca se considera incorrecta.</span><span class="ci-badge badge-g">General</span></label>
     <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="ci-text">Leo las preguntas de Reading <strong>antes</strong> de leer el texto para saber exactamente qué información buscar.</span><span class="ci-badge badge-r">Reading</span></label>
     <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="ci-text">En Part A, respondo en oraciones completas e incluyo exactamente el número de ideas que pide cada pregunta.</span><span class="ci-badge badge-r">Reading</span></label>
     <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="ci-text">No invento información — todas mis respuestas vienen del texto.</span><span class="ci-badge badge-r">Reading</span></label>
